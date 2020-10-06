@@ -11,10 +11,7 @@
         Writing system
       </h3>
       <div class="links">
-        <Button type="primary" target="_blank" rel="noopener noreferrer" to="examples/writing">
-          Next
-          <Icon type="ios-arrow-forward" />
-        </Button>
+        <NextButton to="examples/solar-system" />
       </div>
     </div>
   </div>
