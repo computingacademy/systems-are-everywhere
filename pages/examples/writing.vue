@@ -10,12 +10,20 @@
       <h3 class="subtitle">
         Writing system
       </h3>
+      <WritingInteractive v-on:complete="complete = true" />
       <div class="links">
-        <NextButton to="examples/solar-system" />
+        <NextButton to="examples/solar-system" v-bind:disabled="!complete" />
       </div>
     </div>
   </div>
 </template>
 
 <script>
+export default {
+  data() {
+    return {
+      complete: false,
+    }
+  }
+}
 </script>

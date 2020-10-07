@@ -11,6 +11,7 @@
   "dependencies": {
     "@nuxt/typescript-runtime": "^2.0.0",
     "core-js": "^3.6.5",
+    "interactjs": "^1.10.0",
     "iview": "^3.5.4",
     "nuxt": "^2.14.5"
   },
