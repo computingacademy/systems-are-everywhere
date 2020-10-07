@@ -94,13 +94,6 @@ export default {
 </script>
 
 <style>
-.interactive {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  margin-bottom: 80px;
-}
-
 .piano {
   height: 100%;
   text-align: center;

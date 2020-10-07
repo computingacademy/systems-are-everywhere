@@ -13,6 +13,8 @@ export default {
   data() {
     return {
       element: this.element || 'div',
+      x: this.x || 0,
+      y: this.y || 0,
     }
   },
   mounted() {

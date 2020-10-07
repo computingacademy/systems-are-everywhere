@@ -66,13 +66,6 @@ export default {
 </script>
 
 <style>
-.interactive {
-  display: flex;
-  flex-direction: column;
-  justify-content: stretch;
-  margin-bottom: 80px;
-}
-
 svg {
   width: 100%;
   height: 100%;

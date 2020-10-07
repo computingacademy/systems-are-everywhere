@@ -9,7 +9,7 @@
     </div>
     <Draggable v-for="(letter, index) in letters"
       class="letter" v-bind:value="letter" element="div"
-      v-bind:x="40 + index%2 * 80" v-bind:y="index/2 * 200">
+      v-bind:x="40 + index%2 * 80" v-bind:y="index/2 * 150 - 100">
       {{ letter }}
     </Draggable>
   </div>

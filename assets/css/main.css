@@ -70,7 +70,11 @@
 }
 
 .interactive {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   height: 100%;
+  margin-bottom: 80px;
 }
 
 .subtitle {
