@@ -25,7 +25,7 @@
   background: white;
 }
 
-.main-title, .title {
+.main-title, .section-title, .title {
   font-family:
     'Quicksand',
     'Source Sans Pro',
@@ -52,6 +52,11 @@
   color: #526488;
   word-spacing: 5px;
   padding-bottom: 15px;
+}
+
+.section-title {
+  font-size: 40px;
+  letter-spacing: 1px;
 }
 
 .title {
