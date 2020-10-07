@@ -7,8 +7,9 @@
           class="blank" v-on:drop="addLetter(index, $event)" />
       </div>
     </div>
-    <Draggable v-for="letter in letters"
-      class="letter" v-bind:value="letter">
+    <Draggable v-for="(letter, index) in letters"
+      class="letter" v-bind:value="letter" element="div"
+      v-bind:x="40 + index%2 * 80" v-bind:y="index/2 * 200">
       {{ letter }}
     </Draggable>
   </div>
@@ -18,7 +19,7 @@
 export default {
   data() {
     return {
-      letters: 'MATE',
+      letters: 'AMTE',
       blanks: [],
       words: ['MATE', 'TEAM', 'MEAT'],
     }
@@ -31,7 +32,7 @@ export default {
     checkWord() {
       let word = this.blanks.join('')
       if (this.words.indexOf(word) !== -1)
-        this.$emit('complete')
+        this.$parent.$emit('complete')
     }
   }
 }

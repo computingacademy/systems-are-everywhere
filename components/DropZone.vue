@@ -36,8 +36,8 @@ export default {
 
       let obj = event.relatedTarget.__vue__
       obj.$nextTick(function() {
-        obj.x = getOffset(vm.$el).left + vm.$el.offsetWidth/2 - obj.$el.offsetWidth/2
-        obj.y = getOffset(vm.$el).top + vm.$el.offsetHeight/2 - obj.$el.offsetHeight/2
+        obj.x = getOffset(vm.$el).left + vm.$el.offsetWidth/2 - obj.$el.offsetWidth/2 - obj.$el.offsetLeft
+        obj.y = getOffset(vm.$el).top + vm.$el.offsetHeight/2 - obj.$el.offsetHeight/2 - obj.$el.offsetTop
       })
 
       vm.$emit('drop', obj.value)

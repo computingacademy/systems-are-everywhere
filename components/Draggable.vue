@@ -1,18 +1,18 @@
 <template>
-  <div class="draggable" v-bind:style="{left: x+'px', top: y+'px'}">
+  <component :is="element"
+    class="draggable" v-bind:style="{transform: 'translate('+x+'px, '+y+'px)'}">
     <slot></slot>
-  </div>
+  </component>
 </template>
 
 <script>
 import interact from 'interactjs'
 
 export default {
-  props: ['value'],
+  props: ['value', 'element', 'x', 'y'],
   data() {
     return {
-      x: 50 + Math.random()*200,
-      y: 200 + Math.random()*250,
+      element: this.element || 'div',
     }
   },
   mounted() {
