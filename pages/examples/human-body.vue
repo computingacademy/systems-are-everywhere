@@ -4,7 +4,7 @@
     subtitle="Human body"
     instructions="Create one body from many systems"
     next="../what-are-systems">
-    <SpaceInteractive />
+    <UnderConstruction />
   </InteractivePage>
 </template>
 
