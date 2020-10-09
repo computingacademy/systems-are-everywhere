@@ -2,7 +2,7 @@
   <div class="container">
     <div>
       <h1 class="main-title">
-        Systems are everywhere 
+        Systems are <em>everywhere</em>
       </h1>
       <h2 class="main-subtitle">
         An introduction to systems thinking
