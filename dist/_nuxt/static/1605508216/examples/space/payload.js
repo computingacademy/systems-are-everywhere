@@ -1,0 +1,1 @@
+__NUXT_JSONP__("/examples/space", {data:[{}],fetch:[],mutations:void 0});

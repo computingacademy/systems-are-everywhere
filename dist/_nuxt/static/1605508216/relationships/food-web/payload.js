@@ -1,0 +1,1 @@
+__NUXT_JSONP__("/relationships/food-web", {data:[{}],fetch:[],mutations:void 0});

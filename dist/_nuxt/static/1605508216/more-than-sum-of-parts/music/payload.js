@@ -1,0 +1,1 @@
+__NUXT_JSONP__("/more-than-sum-of-parts/music", {data:[{}],fetch:[],mutations:void 0});

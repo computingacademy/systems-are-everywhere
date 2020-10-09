@@ -1,0 +1,1 @@
+__NUXT_JSONP__("/processes/recipes", {data:[{}],fetch:[],mutations:void 0});

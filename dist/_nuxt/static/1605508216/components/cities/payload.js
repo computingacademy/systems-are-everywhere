@@ -1,0 +1,1 @@
+__NUXT_JSONP__("/components/cities", {data:[{}],fetch:[],mutations:void 0});

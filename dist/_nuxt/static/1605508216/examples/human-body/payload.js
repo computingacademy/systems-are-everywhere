@@ -1,0 +1,1 @@
+__NUXT_JSONP__("/examples/human-body", {data:[{}],fetch:[],mutations:void 0});

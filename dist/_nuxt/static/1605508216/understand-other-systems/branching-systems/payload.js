@@ -1,0 +1,1 @@
+__NUXT_JSONP__("/understand-other-systems/branching-systems", {data:[{}],fetch:[],mutations:void 0});

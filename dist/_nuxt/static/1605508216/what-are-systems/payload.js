@@ -1,0 +1,1 @@
+__NUXT_JSONP__("/what-are-systems", {data:[{}],fetch:[],mutations:void 0});
