@@ -5,7 +5,7 @@
         Systems can have <em>surprising behaviour</em>
       </h1>
       <div class="links">
-        <NextButton to="surprising/pendulums" />
+        <NextButton to="pendulums/" />
       </div>
     </div>
   </div>

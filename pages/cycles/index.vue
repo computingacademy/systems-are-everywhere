@@ -5,7 +5,7 @@
         Processes can create <em>cycles</em>
       </h1>
       <div class="links">
-        <NextButton to="cycles/life-cycles" />
+        <NextButton to="life-cycles/" />
       </div>
     </div>
   </div>

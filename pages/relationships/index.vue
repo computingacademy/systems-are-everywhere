@@ -5,7 +5,7 @@
         Systems also have <em>relationships</em>
       </h1>
       <div class="links">
-        <NextButton to="relationships/food-web" />
+        <NextButton to="food-web/" />
       </div>
     </div>
   </div>

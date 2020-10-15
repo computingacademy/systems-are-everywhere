@@ -5,7 +5,7 @@
         Systems have <em>processes</em> or <em>rules</em>
       </h1>
       <div class="links">
-        <NextButton to="processes/recipes" />
+        <NextButton to="recipes/" />
       </div>
     </div>
   </div>

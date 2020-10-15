@@ -5,7 +5,7 @@
         Systems are made of <em>components</em>
       </h1>
       <div class="links">
-        <NextButton to="components/cities" />
+        <NextButton to="cities/" />
       </div>
     </div>
   </div>

@@ -5,7 +5,7 @@
         But <em>what</em> are systems?
       </h1>
       <div class="links">
-        <NextButton to="components" />
+        <NextButton to="../components/" />
       </div>
     </div>
   </div>

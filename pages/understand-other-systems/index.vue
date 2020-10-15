@@ -5,7 +5,7 @@
         We can use systems to <em>understand other systems</em>
       </h1>
       <div class="links">
-        <NextButton to="understand-other-systems/branching-systems" />
+        <NextButton to="branching-systems/" />
       </div>
     </div>
   </div>

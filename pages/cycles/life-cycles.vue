@@ -3,7 +3,7 @@
     title="Living things have <em>life cycles</em>"
     subtitle="Life cycles"
     instructions="Arrange the life cycle of the butterfly"
-    next="../surprising">
+    next="../../surprising/">
     <UnderConstruction />
   </InteractivePage>
 </template>

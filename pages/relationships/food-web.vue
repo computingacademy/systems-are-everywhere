@@ -3,7 +3,7 @@
     title="Plants and animals <em>eat each other</em>"
     subtitle="Food webs"
     instructions="Feed the cricket"
-    next="../processes">
+    next="../../processes/">
     <UnderConstruction />
   </InteractivePage>
 </template>

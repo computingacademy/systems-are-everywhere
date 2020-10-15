@@ -5,7 +5,7 @@
         Systems can <em>contain</em> other smaller <em>systems</em>
       </h1>
       <div class="links">
-        <NextButton to="contain-systems/communities" />
+        <NextButton to="communities/" />
       </div>
     </div>
   </div>

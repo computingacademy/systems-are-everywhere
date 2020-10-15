@@ -3,7 +3,7 @@
     title="Recipes have <em>steps</em>"
     subtitle="Recipes"
     instructions="Remove a step in the recipe"
-    next="../cycles">
+    next="../../cycles/">
     <UnderConstruction />
   </InteractivePage>
 </template>

@@ -8,7 +8,7 @@
         An introduction to systems thinking
       </h2>
       <div class="links">
-        <NextButton to="examples/writing" />
+        <NextButton to="examples/writing/" />
       </div>
     </div>
   </div>

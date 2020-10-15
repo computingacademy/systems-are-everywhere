@@ -2,6 +2,11 @@ export default {
   // Target (https://go.nuxtjs.dev/config-target)
   target: 'static',
 
+  router: {
+    base: '/systems-are-everywhere/dist/',
+    trailingSlash: true
+  },
+
   // Global page headers (https://go.nuxtjs.dev/config-head)
   head: {
     title: 'systems-are-everywhere',

@@ -3,7 +3,7 @@
     title="Pendulums are <em>tricky</em>"
     subtitle="Physics and chaos"
     instructions="Swing the pendulums"
-    next="../contain-systems">
+    next="../../contain-systems/">
     <PendulumInteractive />
   </InteractivePage>
 </template>
