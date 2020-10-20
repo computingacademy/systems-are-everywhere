@@ -1,12 +1,12 @@
 <template>
   <div class="container">
     <div>
-      <h1 class="section-title">
-        Systems are made of <em>components</em>
-      </h1>
-      <div class="links">
-        <NextButton to="cities/" />
+      <div class="content">
+        <h1 class="section-title">
+          Systems are made of <em>components</em>
+        </h1>
       </div>
+      <NavBar />
     </div>
   </div>
 </template>

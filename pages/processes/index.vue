@@ -1,12 +1,12 @@
 <template>
   <div class="container">
     <div>
-      <h1 class="section-title">
-        Systems have <em>processes</em> or <em>rules</em>
-      </h1>
-      <div class="links">
-        <NextButton to="recipes/" />
+      <div class="content">
+        <h1 class="section-title">
+          Systems have <em>processes</em> or <em>rules</em>
+        </h1>
       </div>
+      <NavBar />
     </div>
   </div>
 </template>

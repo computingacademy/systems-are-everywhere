@@ -1,20 +1,20 @@
 <template>
   <div class="container">
     <div>
-      <h1 class="title" v-html="title"></h1>
-      <h2 class="instructions" v-html="instructions"></h2>
-      <h3 class="subtitle" v-html="subtitle"></h3>
-      <slot></slot>
-      <div class="links">
-        <NextButton v-bind:to="next" v-bind:disabled="!completed" />
+      <div class="content">
+        <h1 class="title" v-html="title"></h1>
+        <h2 class="instructions" v-html="instructions"></h2>
+        <h3 class="subtitle" v-html="subtitle"></h3>
+        <slot></slot>
       </div>
+      <NavBar :completed="completed"/>
     </div>
   </div>
 </template>
 
 <script>
 export default {
-  props: ['title', 'instructions', 'subtitle', 'next'],
+  props: ['title', 'instructions', 'subtitle'],
   data() {
     return {
       completed: false,
