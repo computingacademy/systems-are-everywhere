@@ -1,16 +1,14 @@
 <template>
-  <div class="container">
-    <div>
-      <div class="content">
-        <h1 class="main-title">
-          Systems are <em>everywhere</em>
-        </h1>
-        <h2 class="main-subtitle">
-          An introduction to systems thinking
-        </h2>
-      </div>
-      <NavBar></NavBar>
+  <div class="slide main-slide">
+    <div class="content">
+      <h1 class="main-title">
+        Systems are <em>everywhere</em>
+      </h1>
+      <h2 class="main-subtitle">
+        An introduction to systems thinking
+      </h2>
     </div>
+    <NavBar></NavBar>
   </div>
 </template>
 

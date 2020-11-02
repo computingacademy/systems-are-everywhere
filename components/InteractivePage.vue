@@ -1,14 +1,12 @@
 <template>
-  <div class="container">
-    <div>
-      <div class="content">
-        <h1 class="title" v-html="title"></h1>
-        <h2 class="instructions" v-html="instructions"></h2>
-        <h3 class="subtitle" v-html="subtitle"></h3>
-        <slot></slot>
-      </div>
-      <NavBar :completed="completed"/>
+  <div class="slide">
+    <div class="content">
+      <h1 class="title" v-html="title"></h1>
+      <h2 class="instructions" v-html="instructions"></h2>
+      <slot></slot>
+      <h3 class="subtitle" v-html="subtitle"></h3>
     </div>
+    <NavBar :completed="completed"/>
   </div>
 </template>
 

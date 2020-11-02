@@ -15,7 +15,7 @@
                                   supported by Chrome, Edge, Opera and Firefox */
 }
 
-.container > div {
+.container > .slide {
   display: flex;
   flex-direction: column;
   position: absolute;
@@ -26,7 +26,14 @@
 }
 
 .content {
-  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 520px;
+}
+
+.main-slide .content {
+  justify-content: center;
 }
 
 .main-title, .section-title, .title {
@@ -50,7 +57,6 @@
 }
 
 .main-title {
-  margin-top: 180px;
   font-size: 60px;
   letter-spacing: 1px;
 }
@@ -60,7 +66,6 @@
   font-size: 42px;
   color: #526488;
   word-spacing: 5px;
-  padding-bottom: 15px;
 }
 
 .section-title {
@@ -70,10 +75,11 @@
 
 .title {
   font-size: 42px;
+  line-height: 1.1;
 }
 
 .instructions {
-  margin-top: 40px;
+  margin-top: 20px;
   font-size: 30px;
   font-weight: 400;
 }
@@ -87,9 +93,6 @@
 
 .subtitle {
   font-weight: 300;
-  position: absolute;
-  bottom: 50px;
-  left: 40px;
   font-size: 24px;
   color: #526488;
 }
@@ -98,6 +101,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  height: 40px;
 }
 
 .progress {
