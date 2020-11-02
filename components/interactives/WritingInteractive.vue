@@ -1,17 +1,19 @@
 <template>
   <div class="interactive">
-    <div class="book">
-      <h1>My best</h1>
-      <div class="blanks">
-        <DropZone v-for="(letter, index) in letters"
-          class="blank" v-on:drop="addLetter(index, $event)" />
+    <div class="dragdrop">
+      <div class="book">
+        <h1>My best</h1>
+        <div class="blanks">
+          <DropZone v-for="(letter, index) in letters"
+            class="blank" v-on:drop="addLetter(index, $event)" />
+        </div>
       </div>
+      <Draggable v-for="(letter, index) in letters"
+        class="letter" v-bind:value="letter" element="div"
+        v-bind:x="-60 + index%2 * 280" v-bind:y="index/2 * 150 - 280">
+        {{ letter }}
+      </Draggable>
     </div>
-    <Draggable v-for="(letter, index) in letters"
-      class="letter" v-bind:value="letter" element="div"
-      v-bind:x="40 + index%2 * 80" v-bind:y="index/2 * 150 - 100">
-      {{ letter }}
-    </Draggable>
   </div>
 </template>
 
@@ -39,14 +41,15 @@ export default {
 </script>
 
 <style>
+.dragdrop {
+  margin: auto;
+}
+
 .book {
   background: url('~assets/images/book.png');
   background-repeat: no-repeat;
-  position: absolute;
   width: 200px;
   height: 230px;
-  left: 320px;
-  top: 200px;
   padding: 30px 40px 10px 20px;
   text-align: center;
 }
