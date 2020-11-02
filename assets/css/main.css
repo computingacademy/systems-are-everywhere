@@ -4,7 +4,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background: #eee;
+  background: #49bd9a;
 
   -webkit-touch-callout: none; /* iOS Safari */
     -webkit-user-select: none; /* Safari */
@@ -117,7 +117,7 @@
 
 
 .progress .slide.completed {
-  background-color: orange;
+  background-color: #49bd9a;
 }
 
 .progress .title-slide,
@@ -142,6 +142,19 @@
 }
 
 em {
-  color: orange;
+  color: #49bd9a;
   font-style: normal;
+}
+
+.ivu-btn-primary {
+  background-color: #49bd9a;
+  border-color: #49bd9a;
+}
+.ivu-btn-primary:hover {
+  background-color: #77d6b9;
+  border-color: #77d6b9;
+}
+.ivu-btn-primary:active {
+  background-color: #46b594;
+  border-color: #46b594;
 }

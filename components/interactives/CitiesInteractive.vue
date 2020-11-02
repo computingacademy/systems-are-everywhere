@@ -81,7 +81,7 @@ svg {
 }
 
 .city circle {
-  fill: orange;
+  fill: #49bd9a;
 }
 
 .city.hidden text,
