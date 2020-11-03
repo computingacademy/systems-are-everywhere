@@ -1,6 +1,6 @@
 <template>
-  <component :is="element"
-    class="draggable" v-bind:style="{transform: 'translate('+x+'px, '+y+'px)'}">
+  <component :is="element_"
+    class="draggable" v-bind:style="{transform: 'translate('+x_+'px, '+y_+'px)'}">
     <slot></slot>
   </component>
 </template>
@@ -12,9 +12,9 @@ export default {
   props: ['value', 'element', 'x', 'y'],
   data() {
     return {
-      element: this.element || 'div',
-      x: this.x || 0,
-      y: this.y || 0,
+      element_: this.element || 'div',
+      x_: this.x || 0,
+      y_: this.y || 0,
     }
   },
   mounted() {
@@ -23,8 +23,8 @@ export default {
     function dragMoveListener(event) {
       var target = event.target
       // keep the dragged position in the x/y attributes
-      vm.x += event.dx
-      vm.y += event.dy
+      vm.x_ += event.dx
+      vm.y_ += event.dy
     }
 
     interact(vm.$el)

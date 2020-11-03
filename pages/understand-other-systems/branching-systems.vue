@@ -4,7 +4,7 @@
     subtitle="Water, electrical and living systems"
     instructions="Sort the black and white pictures"
     next="../../conclusion/">
-    <UnderConstruction />
+    <BranchesInteractive />
   </InteractivePage>
 </template>
 

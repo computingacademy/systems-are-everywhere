@@ -15,6 +15,7 @@ function getOffset(el) {
 }
 
 export default {
+  props: ['snap'],
   data() {
     return {
       hover: false,
@@ -29,22 +30,30 @@ export default {
 
     function ondragleave(event) {
       vm.hover = false 
+
+      let obj = event.relatedTarget.__vue__
+      vm.$emit('leave', obj.value)
     }
 
     function ondrop(event) {
       vm.hover = false 
 
       let obj = event.relatedTarget.__vue__
-      obj.$nextTick(function() {
-        obj.x = getOffset(vm.$el).left + vm.$el.offsetWidth/2 - obj.$el.offsetWidth/2 - obj.$el.offsetLeft
-        obj.y = getOffset(vm.$el).top + vm.$el.offsetHeight/2 - obj.$el.offsetHeight/2 - obj.$el.offsetTop
-      })
+      if (vm.snap) {
+        obj.$nextTick(function() {
+          obj.x_ = getOffset(vm.$el).left + vm.$el.offsetWidth/2 - obj.$el.offsetWidth/2 - obj.$el.offsetLeft
+          obj.y_ = getOffset(vm.$el).top + vm.$el.offsetHeight/2 - obj.$el.offsetHeight/2 - obj.$el.offsetTop
+        })
+      }
 
       vm.$emit('drop', obj.value)
     }
 
     function onremove(event) {
       vm.contains.splice(vm.contains.indexOf(event.target.__vue__), 1)
+
+      let obj = event.relatedTarget.__vue__
+      vm.$emit('remove', obj.value)
     }
 
     interact(vm.$el)

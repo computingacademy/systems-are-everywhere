@@ -5,7 +5,7 @@
         <h1>My best</h1>
         <div class="blanks">
           <DropZone v-for="(letter, index) in letters"
-            class="blank" v-on:drop="addLetter(index, $event)" />
+            class="blank" v-on:drop="addLetter(index, $event)" snap="true" />
         </div>
       </div>
       <Draggable v-for="(letter, index) in letters"
@@ -65,14 +65,14 @@ export default {
   z-index: 100;
 }
 
-.drop-zone {
+.blank {
   display: inline-block;
   width: 35px;
   height: 50px;
   background: white;
   border: 2px solid black;
 }
-.drop-zone.hover {
+.blank.hover {
   background: gold;
 }
 </style>

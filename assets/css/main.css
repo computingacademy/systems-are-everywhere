@@ -41,7 +41,7 @@ body {
   justify-content: center;
 }
 
-.main-title, .section-title, .title {
+.main-title, .section-title, .title, .label {
   font-family:
     'Quicksand',
     'Source Sans Pro',
