@@ -16,7 +16,9 @@
     "matter-js": "^0.14.2",
     "nuxt": "^2.14.5",
     "piano-chart": "^1.5.0",
-    "tone": "^14.7.58"
+    "tone": "^14.7.58",
+    "vis-data": "^7.1.0",
+    "vis-network": "^8.5.2"
   },
   "devDependencies": {
     "@nuxt/types": "^2.14.5",

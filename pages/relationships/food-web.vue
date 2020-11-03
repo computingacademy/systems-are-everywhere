@@ -2,9 +2,9 @@
   <InteractivePage
     title="Plants and animals <em>eat each other</em>"
     subtitle="Food webs"
-    instructions="Feed the cricket"
+    instructions="Find the grasshopper's food"
     next="../../processes/">
-    <UnderConstruction />
+    <FoodWebInteractive />
   </InteractivePage>
 </template>
 
