@@ -2,9 +2,9 @@
   <InteractivePage
     title="Recipes have <em>steps</em>"
     subtitle="Recipes"
-    instructions="Remove a step in the recipe"
+    instructions="Order the steps in the recipe"
     next="../../cycles/">
-    <UnderConstruction />
+    <RecipeInteractive />
   </InteractivePage>
 </template>
 
