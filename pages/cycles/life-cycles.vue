@@ -4,7 +4,7 @@
     subtitle="Life cycles"
     instructions="Arrange the life cycle of the butterfly"
     next="../../surprising/">
-    <UnderConstruction />
+    <LifeCycleInteractive />
   </InteractivePage>
 </template>
 
