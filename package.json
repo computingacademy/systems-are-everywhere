@@ -11,6 +11,8 @@
   "dependencies": {
     "@nuxt/typescript-runtime": "^2.0.0",
     "core-js": "^3.6.5",
+    "d3": "^6.2.0",
+    "geoplugin": "^1.0.5",
     "interactjs": "^1.10.0",
     "iview": "^3.5.4",
     "matter-js": "^0.14.2",
