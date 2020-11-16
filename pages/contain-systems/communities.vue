@@ -4,7 +4,7 @@
     subtitle="Communities"
     instructions="Zoom out to see all of the communities"
     next="../../understand-other-systems/">
-    <UnderConstruction />
+    <CommunitiesInteractive />
   </InteractivePage>
 </template>
 
