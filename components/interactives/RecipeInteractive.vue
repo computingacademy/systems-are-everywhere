@@ -1,13 +1,14 @@
 <template>
   <div class="interactive">
-    <div class="dragdrop">
-      <div class="steps">
+    <div class="recipe-dragdrop">
+      <div class="recipe-steps">
         <DropZone v-for="(step, index) in steps"
           class="blank-step" v-on:drop="addStep(index, $event)" snap="true" />
       </div>
       <Draggable v-for="(step, index) in steps"
-        class="step" v-bind:value="step.index" element="div"
-        v-bind:x="0 + index * 80" v-bind:y="180 + index*10">
+        class="recipe-step" v-bind:value="step.index" element="div"
+        v-bind:x="0 + index * 80" v-bind:y="-80 + index*10">
+        <img :src="require('~/assets/images/recipe/'+step.image)">
         {{ step.step }}
       </Draggable>
     </div>
@@ -19,11 +20,11 @@ export default {
   data() {
     return {
       steps: [
-        {index: 3, step: 'Pour into the cake tin'},
-        {index: 2, step: 'Mix in the flour'},
-        {index: 4, step: 'Bake the cake in the oven'},
-        {index: 1, step: 'Mix in the eggs'},
-        {index: 0, step: 'Cream the butter and sugar'},
+        {index: 2, step: 'Pour into the cake tin', image: 'pour.png'},
+        {index: 3, step: 'Bake the cake in the oven', image: 'oven.png'},
+        {index: 1, step: 'Mix in the eggs and flour', image: 'flour_eggs.png'},
+        {index: 0, step: 'Cream the butter and sugar', image: 'beater.png'},
+        {index: 4, step: 'Ice the cake', image: 'icing.png'},
       ],
       blankSteps: [],
     }
@@ -41,27 +42,35 @@ export default {
 </script>
 
 <style>
-.dragdrop {
+.recipe-dragdrop {
   display: flex;
 }
 
-.steps {
-  width: 100%;
+.recipe-steps {
+  width: 300px;
+  margin: auto;
 }
 
-.step {
-  margin: 0px;
+.recipe-step {
+  display: flex !important;
+  flex-direction: row;
+  align-items: center;
+  padding: 4px;
+
   font-size: 20px;
-  color: darkred;
   background-color: white;
   box-shadow: -2px 2px 4px rgba(0,0,0, 0.3);
   z-index: 100;
 }
 
+.recipe-step img {
+  margin-right: 5px;
+  height: 40px;
+}
+
 .blank-step {
-  text-align: left;
   display: block;
-  height: 30px;
+  height: 50px;
   background: white;
   border: 2px solid black;
 }
