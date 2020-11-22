@@ -21,6 +21,8 @@ export default {
     let vm = this
 
     function dragMoveListener(event) {
+      event.preventDefault()
+
       var target = event.target
       // keep the dragged position in the x/y attributes
       vm.x_ += event.dx
@@ -39,5 +41,6 @@ export default {
 .draggable {
   display: inline-block; 
   position: absolute;
+  touch-action: none;
 }
 </style>
