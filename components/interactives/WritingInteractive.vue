@@ -44,22 +44,32 @@ export default {
 .book {
   background: url('~assets/images/book.png');
   background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
   width: 200px;
   height: 230px;
   margin: auto;
-  padding: 30px 40px 10px 20px;
+  padding: 20px;
+
   text-align: center;
 }
 
 .book > h1 {
   color: gold;
+  font-weight: bold;
+  margin-bottom: 20px;
 }
 
 .letter {
+  width: 35px;
   margin: 0px;
-  font-size: 40px;
-  color: darkred;
+  background-color: white;
+  box-shadow: -2px 2px 4px rgba(0,0,0, 0.3);
   z-index: 100;
+
+  font-size: 40px;
+  color: #49bd9a;
+  text-align: center;
 }
 
 .blank {
