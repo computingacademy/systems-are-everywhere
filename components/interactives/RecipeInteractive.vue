@@ -1,13 +1,13 @@
 <template>
   <div class="interactive">
-    <div class="recipe-dragdrop">
+    <div class="dragdrop recipe-dragdrop">
       <div class="recipe-steps">
         <DropZone v-for="(step, index) in steps"
           class="blank-step" v-on:drop="addStep(index, $event)" snap="true" />
       </div>
       <Draggable v-for="(step, index) in steps"
         class="recipe-step" v-bind:value="step.index" element="div"
-        v-bind:x="0 + index * 80" v-bind:y="-80 + index*10">
+        :spread="{from: [0.3, 0], to: [0.3, 0.6], index: index, count: steps.length}">
         <img :src="require('~/assets/images/recipe/'+step.image)">
         {{ step.step }}
       </Draggable>

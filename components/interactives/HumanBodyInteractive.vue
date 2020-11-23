@@ -1,11 +1,11 @@
 <template>
   <div class="interactive">
-    <div class="body-systems-dragdrop">
+    <div class="dragdrop body-systems-dragdrop">
       <div class="body-systems">
         <DropZone class="blank-body" v-on:drop="addSystem(index, $event)" snap="true" />
         <Draggable v-for="(system, index) in systems"
           class="body-system" v-bind:value="system.name" element="div"
-          :x="-20 + index*150" :y="index ==2 ? 120 : 0">
+          :spread="{from: [0.2, 0], to: [0.8, 1], index: index, count: systems.length}">
           <img :src="require('~/assets/images/human-body/'+system.image)">
           <h3>
             {{ system.name }}

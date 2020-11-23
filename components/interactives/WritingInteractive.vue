@@ -1,6 +1,11 @@
 <template>
   <div class="interactive">
     <div class="dragdrop">
+      <Draggable v-for="(letter, index) in letters"
+        class="letter" v-bind:value="letter" element="div"
+        :spread="{from: [0.1, 0.3], to: [0.9, 0.7], index: index, count: letters.length}">
+        {{ letter }}
+      </Draggable>
       <div class="book">
         <h1>My best</h1>
         <div class="blanks">
@@ -8,11 +13,6 @@
             class="blank" v-on:drop="addLetter(index, $event)" snap="true" />
         </div>
       </div>
-      <Draggable v-for="(letter, index) in letters"
-        class="letter" v-bind:value="letter" element="div"
-        v-bind:x="-60 + index%2 * 280" v-bind:y="index/2 * 150 - 280">
-        {{ letter }}
-      </Draggable>
     </div>
   </div>
 </template>
@@ -41,15 +41,12 @@ export default {
 </script>
 
 <style>
-.dragdrop {
-  margin: auto;
-}
-
 .book {
   background: url('~assets/images/book.png');
   background-repeat: no-repeat;
   width: 200px;
   height: 230px;
+  margin: auto;
   padding: 30px 40px 10px 20px;
   text-align: center;
 }

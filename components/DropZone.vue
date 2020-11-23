@@ -7,13 +7,6 @@
 <script>
 import interact from 'interactjs'
 
-function getOffset(el) {
-  return {
-    left: el.offsetLeft + (el.offsetParent ? el.offsetParent.offsetLeft : 0),
-    top: el.offsetTop + (el.offsetParent ? el.offsetParent.offsetTop : 0),
-  };
-}
-
 export default {
   props: ['snap'],
   data() {
@@ -41,8 +34,8 @@ export default {
       let obj = event.relatedTarget.__vue__
       if (vm.snap) {
         obj.$nextTick(function() {
-          obj.x_ = getOffset(vm.$el).left + vm.$el.offsetWidth/2 - obj.$el.offsetWidth/2 - obj.$el.offsetLeft
-          obj.y_ = getOffset(vm.$el).top + vm.$el.offsetHeight/2 - obj.$el.offsetHeight/2 - obj.$el.offsetTop
+          obj.x_ = vm.$el.offsetLeft + vm.$el.offsetWidth/2 - obj.$el.offsetWidth/2 - obj.$el.offsetLeft
+          obj.y_ = vm.$el.offsetTop + vm.$el.offsetHeight/2 - obj.$el.offsetHeight/2 - obj.$el.offsetTop
         })
       }
 
@@ -68,5 +61,8 @@ export default {
 
 <style>
 .drop-zone {
+}
+.dragdrop {
+  position: relative;
 }
 </style>

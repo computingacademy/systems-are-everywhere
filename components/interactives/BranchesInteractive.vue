@@ -1,17 +1,19 @@
 <template>
   <div class="interactive branches">
-    <DropZone v-for="system in systems"
-      class="system"
-      v-on:drop="checkPicture(system, $event)"
-      v-on:leave="resetPicture($event)">
-      <span class="label">{{ system }}</span>
-    </DropZone>
-    <Draggable v-for="(picture, index) in pictures" :key="picture.image"
-      :class="{picture: true, correct: picture.correct, incorrect: picture.correct == false}"
-      v-bind:value="picture" element="div"
-      v-bind:x="index*20" v-bind:y="180 + 10*index">
-      <img :src="require('~/assets/images/branches/'+picture.image)">
-    </Draggable>
+    <div class="dragdrop">
+      <Draggable v-for="(picture, index) in pictures" :key="picture.image"
+        :class="{picture: true, correct: picture.correct, incorrect: picture.correct == false}"
+        v-bind:value="picture" element="div"
+        :spread="{from: [0.3, 0.3], to: [0.7, 0.7], index: index, count: pictures.length}">
+        <img :src="require('~/assets/images/branches/'+picture.image)">
+      </Draggable>
+      <DropZone v-for="system in systems"
+        class="system"
+        v-on:drop="checkPicture(system, $event)"
+        v-on:leave="resetPicture($event)">
+        <span class="label">{{ system }}</span>
+      </DropZone>
+    </div>
   </div>
 </template>
 
@@ -64,7 +66,8 @@ export default {
 </script>
 
 <style>
-.interactive.branches {
+.interactive.branches > div {
+  height: 100%;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
