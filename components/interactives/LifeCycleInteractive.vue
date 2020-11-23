@@ -13,17 +13,17 @@ export default {
   data() {
     return {
       stages: [{
-        name: 'crysalis',
+        name: 'chrysalis',
         next: 'butterfly',
       }, {
         name: 'butterfly',
         next: 'egg',
       }, {
-        name: 'larvae',
-        next: 'crysalis',
+        name: 'caterpillar',
+        next: 'chrysalis',
       }, {
         name: 'egg',
-        next: 'larvae',
+        next: 'caterpillar',
       }],
     }
   },
@@ -39,8 +39,13 @@ export default {
           physics: false,
           x: -300 + index*150,
           y: 0,
-          //shape: 'circularImage',
-          //image: require('~/assets/images/food-web/'+organism.name+'.png'),
+          size: 50,
+          shape: 'circularImage',
+          image: require('~/assets/images/life-cycle/'+organism.name+'.png'),
+          imagePadding: 20,
+          color: {
+            border: '#49bd9a',
+          },
         }
       }),
       edges: new DataSet([]),
@@ -75,6 +80,9 @@ export default {
         zoomView: false,
       },
       manipulation: {
+        controlNodeStyle: {
+          color: '#49bd9a',
+        },
         addEdge: (newEdge, callback) => {
           callback(newEdge)
 
