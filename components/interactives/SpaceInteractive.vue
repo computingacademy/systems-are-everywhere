@@ -1,15 +1,17 @@
 <template>
   <div class="interactive">
-    <svg>
+    <svg viewBox="0 0 720 300">
       <g class="planets">
         <circle v-for="planet in planets"
           class="orbit" :r="planet.distance"></circle>
+        <path class="orbit-progress" :d="`M ${earth.distance} 0 A ${earth.distance} ${earth.distance} ${time/365*360} ${time/365 < 0.5 ? 0 : 1} 1 ${position(earth).x} ${position(earth).y}`"></path>
         <g v-for="planet in planets"
           class="planet"
           :style="{transform: 'translate('+position(planet).x+'px ,'+position(planet).y+'px)'}">
           <text class="text-background":dx="0" :dy="-planet.size - 2">{{ planet.name }}</text>
           <text :dx="0" :dy="-planet.size - 2">{{ planet.name }}</text>
-          <circle :fill="planet.colour" :r="planet.size"></circle>
+          <image :href="require('~/assets/images/planets/'+planet.name+'.png')"
+            :width="planet.size" :height="planet.size" :x="-planet.size/2" :y="-planet.size/2"></image>
         </g>
       </g>
     </svg>
@@ -96,10 +98,15 @@ export default {
         this.$parent.$emit('complete')
     }
   },
+  computed: {
+    earth() {
+      return this.planets.find(p => p.name == 'Earth')
+    },
+  },
 }
 </script>
 
-<style>
+<style scoped>
 .interactive > svg {
   width: 100%;
   height: 100%;
@@ -114,6 +121,12 @@ export default {
   fill: none;
   stroke: #eeccee;
   stroke-width: 2px;
+}
+
+.orbit-progress {
+  fill: none;
+  stroke: #49bd9a;
+  stroke-width: 4px;
 }
 
 .text-background {
