@@ -5,9 +5,10 @@
         <DropZone class="blank-body" v-on:drop="addSystem(index, $event)" snap="true" />
         <Draggable v-for="(system, index) in systems"
           class="body-system" v-bind:value="system.name" element="div"
+          :style="{zIndex: 100+system.index}"
           :spread="{from: [0.2, 0], to: [0.8, 1], index: index, count: systems.length}">
           <img :src="require('~/assets/images/human-body/'+system.image)">
-          <h3>
+          <h3 v-if="!inBody(system)">
             {{ system.name }}
           </h3>
         </Draggable>
@@ -21,11 +22,11 @@ export default {
   data() {
     return {
       systems: [
-        {name: 'Cardiac System', image: 'Body_Cardiac.png'},
-        {name: 'Digestive System', image: 'Body_Digestive.png'},
-        {name: 'Skeletal System', image: 'Body_Skeletal.png'},
-        {name: 'Muscle System', image: 'Body_Muscles.png'},
-        {name: 'Nervous System', image: 'Body_Nervous.png'},
+        {name: 'Cardiac System', image: 'Body_Cardiac.png', index: 2},
+        {name: 'Digestive System', image: 'Body_Digestive.png', index: 4},
+        {name: 'Skeletal System', image: 'Body_Skeletal.png', index: 1},
+        {name: 'Muscle System', image: 'Body_Muscles.png', index: 0},
+        {name: 'Nervous System', image: 'Body_Nervous.png', index: 3},
       ],
       body: [],
     }
@@ -35,7 +36,10 @@ export default {
       this.body.push(value)
       if (this.body.length == this.systems.length)
         this.$parent.$emit('complete')
-    }
+    },
+    inBody(system) {
+      return this.body.indexOf(system.name) !== -1
+    },
   }
 }
 </script>
@@ -52,8 +56,11 @@ export default {
 
 .body-system {
   text-align: center;
+  width: 170px;
   padding: 10px;
   z-index: 100;
+  background: rgba(40,20,0, 0.1);
+  box-shadow: 2px 2px 4px rgba(40,20,0, 0.2);
 }
 
 .body-system img {
@@ -68,7 +75,7 @@ export default {
   text-align: left;
   display: block;
   height: 180px;
-  width: 150px;
+  width: 170px;
   margin: auto;
   background: white;
   border: 2px solid black;
