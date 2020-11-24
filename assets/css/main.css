@@ -110,40 +110,48 @@ body {
 }
 
 .progress {
-  display: flex;
   align-items: center;
   font-size: 15px;
   line-height: 0px;
 }
 
-.progress .slide {
-  display: inline-block;
-  margin: 2px;
-  width: 15px;
-  height: 15px;
+.progress .section {
   border: 3px solid #526488;
+  min-width: 15px;
+  height: 36px;
 }
 
+
+.progress .section.open {
+  overflow: hidden;
+  animation-duration: 1s;
+  animation-name: open;
+}
+
+.progress .section.completed {
+  background-color: #49bd9a;
+}
+
+.progress .slide {
+  display: inline-block;
+  margin: 0px;
+  width: 15px;
+  height: 30px;
+  border: 1px solid #526488;
+}
 
 .progress .slide.completed {
   background-color: #49bd9a;
 }
 
-.progress .title-slide,
-.progress .section-slide {
-  width: 22px;
-  height: 22px;
-}
+@keyframes open {
+  from {
+    width: 0px;
+  }
 
-.progress .slide:not(.title-slide):not(.section-slide)::before {
-  content: "";
-  position: absolute;
-  width: 5px;
-  height: 3px;
-  top: 50%;
-  margin-top: -1.5px;
-  margin-left: -8px;
-  background-color: #526488;
+  to {
+    width: 100%;
+  }
 }
 
 .links {
