@@ -1,16 +1,15 @@
 <template>
   <div class="interactive">
-    <div class="australia">
-      <svg>
-        <g v-for="city in cities"
-          :class="{city: true, hidden: city.hidden}"
-          :style="{transform: 'translate('+city.x+'px, '+city.y+'px)'}">
-          <circle r="20"
-            @click="city.hidden = false"></circle>
-          <text dx="25" dy="5">{{ city.name }}</text>
-        </g>
-      </svg>
-    </div>
+    <svg viewBox="0 0 340 340">
+      <image :href="require('~/assets/images/australia-night.jpg')" width="340" height="340"></image>
+      <g v-for="city in cities"
+        :class="{city: true, hidden: city.hidden}"
+        :style="{transform: 'translate('+city.x+'px, '+city.y+'px)'}">
+        <circle r="10"
+          @click="city.hidden = false"></circle>
+        <text text-anchor="middle" dy="25">{{ city.name }}</text>
+      </g>
+    </svg>
   </div>
 </template>
 
@@ -20,35 +19,35 @@ export default {
     return {
       cities: [{
         name: 'Sydney',
-        x: 520, y: 220,
+        x: 300, y: 215,
         hidden: true,
       }, {
         name: 'Melbourne',
-        x: 460, y: 260,
+        x: 255, y: 245,
         hidden: true,
       }, {
         name: 'Brisbane',
-        x: 530, y: 170,
+        x: 315, y: 170,
         hidden: true,
       }, {
         name: 'Perth',
-        x: 220, y: 210,
+        x: 50, y: 205,
         hidden: true,
       }, {
         name: 'Adelaide',
-        x: 410, y: 230,
+        x: 210, y: 220,
         hidden: true,
       }, {
         name: 'Hobart',
-        x: 480, y: 300,
+        x: 275, y: 280,
         hidden: true,
       }, {
         name: 'Darwin',
-        x: 340, y: 40,
+        x: 155, y: 65,
         hidden: true,
       }, {
         name: 'Canberra',
-        x: 500, y: 240,
+        x: 285, y: 225,
         hidden: true,
       }],
     }
@@ -65,19 +64,11 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 svg {
   width: 100%;
   height: 100%;
-}
-
-.australia {
-  height: 100%;
-  background-image: url('~assets/images/australia-night.jpg');
-  background-color: #010220;
-  background-repeat: no-repeat;
-  background-size: contain;
-  background-position: center;
+  background-color: #02031d;
 }
 
 .city circle {
