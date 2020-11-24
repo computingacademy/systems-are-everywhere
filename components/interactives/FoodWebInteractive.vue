@@ -66,6 +66,10 @@ export default {
           label: organism.name,
           shape: 'circularImage',
           image: require('~/assets/images/food-web/'+organism.name+'.png'),
+          imagePadding: 5,
+          color: {
+            border: '#49bd9a',
+          },
         }
       }),
       edges: this.organisms
@@ -105,11 +109,26 @@ export default {
     let network = new Network(this.$el, data, options)
 
     network.on('select', event => {
-      let grasshopper = vm.organisms.find(o => o.name == 'grasshopper')
-      let foodSelected = event.nodes.indexOf(grasshopper.eats[0]) != -1
-      if (foodSelected)
-        vm.$parent.$emit('complete')
+      if (this.$parent.step == 0) {
+        let grasshopper = vm.organisms.find(o => o.name == 'grasshopper')
+        let foodSelected = event.nodes.indexOf(grasshopper.eats[0]) != -1
+        if (foodSelected) {
+          vm.$parent.$emit('complete')
+          setTimeout(() => network.selectNodes([]), 1000)
+        }
+      } else {
+        let selected = vm.organisms.find(o => o.name == event.nodes[0])
+        let predatorSelected = (selected.eats || []).indexOf('grasshopper') != -1 
+        if (predatorSelected) {
+          vm.$parent.$emit('complete')
+          setTimeout(() => network.selectNodes([]), 1000)
+        }
+      }
     })
   },
 }
 </script>
+
+<style>
+
+</stlye>
