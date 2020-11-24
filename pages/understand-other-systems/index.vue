@@ -2,7 +2,7 @@
   <div class="slide">
     <div class="content">
       <h1 class="section-title">
-        We can use systems to <em>understand other systems</em>
+        Systems help us <em>understand other systems</em>
       </h1>
       <video height="450" autoplay muted>
         <source src="~assets/video/understand.mp4" type="video/mp4">
@@ -14,3 +14,9 @@
 
 <script>
 </script>
+
+<style scoped>
+.section-title {
+  font-size: 32px;
+}
+</style>

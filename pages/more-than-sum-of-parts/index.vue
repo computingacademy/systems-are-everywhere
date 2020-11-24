@@ -14,3 +14,9 @@
 
 <script>
 </script>
+
+<style scoped>
+.section-title {
+  font-size: 32px;
+}
+</style>
