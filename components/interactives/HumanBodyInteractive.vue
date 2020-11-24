@@ -2,7 +2,7 @@
   <div class="interactive">
     <div class="dragdrop body-systems-dragdrop">
       <div class="body-systems">
-        <DropZone class="blank-body" v-on:drop="addSystem(index, $event)" snap="true" />
+        <DropZone class="blank-body" v-on:drop="addSystem($event)" snap="true" />
         <Draggable v-for="(system, index) in systems"
           class="body-system" v-bind:value="system.name" element="div"
           :style="{zIndex: 100+system.index}"
@@ -32,7 +32,7 @@ export default {
     }
   },
   methods: {
-    addSystem(index, value) {
+    addSystem(value) {
       this.body.push(value)
       if (this.body.length == this.systems.length)
         this.$parent.$emit('complete')

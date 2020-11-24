@@ -46,7 +46,6 @@ export default {
     spreadPos(spread) {
       let x = spread.from[0] + (spread.to[0] - spread.from[0]) * (spread.index%2) 
       let y = spread.from[1] + (spread.to[1] - spread.from[1])/(Math.floor(spread.count/2)) * (spread.index/2)
-      console.log(x)
 
       return {x, y}
     },
