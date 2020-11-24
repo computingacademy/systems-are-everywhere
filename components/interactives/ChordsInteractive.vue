@@ -12,10 +12,14 @@ import { Instrument } from "piano-chart"
 export default {
   data() {
     return {
+      requiredKeys: ['D3', 'G3', 'B3'],
       keysDown: [],
+      keysPressed: [],
     }
   },
   mounted() {
+    let vm = this
+
     let sampler = new Tone.Sampler({
       urls: {
         A1: "A1.mp3",
@@ -27,21 +31,29 @@ export default {
     let piano = new Instrument(this.$el.querySelector('.piano'), {
       startOctave: 3,
       endOctave: 4,
-      highlightedNotes: ['D', 'B', 'G'],
+      showNoteNames: 'always',
+      highlightedNotes: this.requiredKeys,
     })
 
     piano.create()
 
     piano.addKeyMouseDownListener(function(key) {
+      event.preventDefault()
+      let keyString = key.note+key.octave
       const now = Tone.now()
-      sampler.triggerAttack(key.note+key.octave, now)
+      sampler.triggerAttack(keyString, now)
       piano.keyDown(key)
+      if (vm.keysDown.indexOf(keyString) == -1) {
+        vm.keysDown.push(keyString)
+        vm.recordKey(keyString)
+      }
     })
 
     piano.addKeyMouseUpListener(function(key) {
       const now = Tone.now()
       sampler.triggerRelease(key.note+key.octave, now)
       piano.keyUp(key)
+      vm.keysDown.splice(vm.keysDown.indexOf(key.note+key.octave), 1)
     })
 
     const keys = {
@@ -60,19 +72,24 @@ export default {
       l: 'C4',
     }
 
-    let vm = this
+    this.autoplayKey = key => {
+      const now = Tone.now()
+      sampler.triggerAttack(key, now)
+      piano.keyDown(key)
+    }
 
-    window.addEventListener('keydown', function(event) {
+    this.pressKey = event => {
       let key = keys[event.key]
       if (key && vm.keysDown.indexOf(key) == -1) {
         vm.keysDown.push(key)
         const now = Tone.now()
         sampler.triggerAttack(key, now)
         piano.keyDown(key)
+        vm.recordKey(key)
       }
-    })
+    }
 
-    window.addEventListener('keyup', function(event) {
+    this.releaseKey = event => {
       let key = keys[event.key]
       if (key) {
         vm.keysDown.splice(vm.keysDown.indexOf(key), 1)
@@ -80,15 +97,33 @@ export default {
         sampler.triggerRelease(key, now)
         piano.keyUp(key)
       }
-    })
+    }
+
+    window.addEventListener('keydown', this.pressKey)
+    window.addEventListener('keyup', this.releaseKey)
+  },
+  beforeDestroy() {
+    window.removeEventListener('keydown', this.pressKey)
+    window.removeEventListener('keyup', this.releaseKey)
   },
   watch: {
-    keysDown(keys) {
-      if (keys.indexOf('D3') !== -1
-        && keys.indexOf('G3') !== -1
-        && keys.indexOf('B3') !== -1)
+    keysPressed(keys) {
+      let allKeysPressed = this.requiredKeys
+        .every(key => keys.indexOf(key) !== -1)
+      if (allKeysPressed) {
         this.$parent.$emit('complete')
+        setTimeout(() => {
+          this.requiredKeys.forEach(this.autoplayKey)
+        }, 1000)
+      }
     }
+  },
+  methods: {
+    recordKey(key) {
+      this.keysPressed.push(key)
+      if (this.keysPressed.length > this.requiredKeys.length)
+        this.keysPressed.splice(0, this.keysPressed.length-this.requiredKeys.length)
+    },
   },
 }
 </script>
@@ -97,5 +132,6 @@ export default {
 .piano {
   height: 100%;
   text-align: center;
+  touch-action: none;
 }
 </style>
