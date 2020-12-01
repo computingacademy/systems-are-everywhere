@@ -22,6 +22,7 @@ export default {
 
     getGeo()
       .then(response => response.city)
+      .catch(error => 'Adelaide')
       .then(chart.zoomToCity)
 
     chart.onZoom(d => {
