@@ -1,6 +1,6 @@
 <template>
   <InteractivePage
-    title="Communities join to create <em>communities of communities</em>"
+    title="Communities contain <em><small>smaller communities</small></em>"
     subtitle="Communities"
     instructions="Zoom out to see all of the communities"
     next="../../understand-other-systems/">
@@ -8,5 +8,8 @@
   </InteractivePage>
 </template>
 
-<script>
-</script>
+<style>
+.slide .title {
+  font-size: 38px;
+}
+</style>

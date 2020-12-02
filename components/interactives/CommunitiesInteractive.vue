@@ -25,8 +25,8 @@ export default {
       .catch(error => 'Adelaide')
       .then(chart.zoomToCity)
 
-    chart.onZoom(d => {
-      if (d.data.name == chart.chart.root.data.name)
+    chart.onZoom(event => {
+      if (event.transform.k < 1)
         vm.$parent.$emit('complete')
     })
   },

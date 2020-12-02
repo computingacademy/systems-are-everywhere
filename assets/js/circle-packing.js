@@ -17,79 +17,120 @@ const pack = data => d3.pack()
     .sort((a, b) => b.value - a.value))
 
 let chart = function(element) {
+  let origin = d3.zoomIdentity.translate(-width/2, -height/2);
   chart.zoomEvents = [];
   chart.root = pack(data);
-  chart.focus = chart.root.descendants().find(d => d.data.name == 'Adelaide').parent;
-  let view;
+  chart.focus = chart.root.descendants().find(d => d.data.name == 'Australia').parent;
+  chart.scale = 1;
 
   const svg = d3.select(element)
       .attr('viewBox', `-${width / 2} -${height / 2} ${width} ${height}`)
       .style('display', 'block')
       .style('background', color(0))
-      .style('cursor', 'pointer')
-      .on('click', (event) => zoom(event, chart.root));
+      .style('cursor', 'pointer');
 
-  const node = svg.append('g')
-    .selectAll('circle')
-    .data(chart.root.descendants().slice(1))
-    .join('circle')
-      .attr('fill', d => d.children ? color(d.depth) : 'white')
-      .attr('pointer-events', d => !d.children ? 'none' : null)
-      .on('mouseover', function() { d3.select(this).attr('stroke', '#000'); })
-      .on('mouseout', function() { d3.select(this).attr('stroke', null); })
-      .on('click', (event, d) => focus !== d && (zoom(event, d), event.stopPropagation()));
+  const nodeGroup = svg.append('g');
 
-  const label = svg.append('g')
-      .style('font', '10px sans-serif')
-      .attr('pointer-events', 'none')
-      .attr('text-anchor', 'middle')
-    .selectAll('text')
-    .data(chart.root.descendants())
-    .join('text')
-      .style('fill-opacity', d => d.parent === chart.root ? 1 : 0)
-      .style('display', d => d.parent === chart.root ? 'inline' : 'none')
-      .text(d => d.data.name);
+  const labelGroup = svg.append('g');
 
-  zoomTo([chart.root.x, chart.root.y, chart.root.r * 2]);
+  const label = labelGroup
+    .style('font', '10px sans-serif')
+    .attr('pointer-events', 'none')
+    .attr('text-anchor', 'middle')
 
-  function zoomTo(v) {
-    const k = width / v[2];
+   let zoom = d3.zoom()
+     .on('zoom', event => {
+       chart.zoomEvents.forEach(f => f(event));
+       zoomTo(event.transform);
+     });
 
-    view = v;
+  svg.call(zoom);
 
-    label.attr('transform', d => `translate(${(d.x - v[0]) * k},${(d.y - v[1]) * k})`);
-    node.attr('transform', d => `translate(${(d.x - v[0]) * k},${(d.y - v[1]) * k})`);
-    node.attr('r', d => d.r * k);
+  function containing(extent, point, r, overlapping) {
+    r = r || 0;
+    let coordinates = {
+        left: extent[0][0],
+        right: extent[1][0],
+        top: extent[0][1],
+        bottom: extent[1][1], 
+    };
+    if (!!overlapping &&
+        (point[0]+r > coordinates.left ||
+        point[0]-r < coordinates.right ||
+        point[1]+r > coordinates.top ||
+        point[1]-r < coordinates.bottom)) {
+      return true;
+    }
+    if (!overlapping &&
+        point[0]+r > coordinates.left &&
+        point[0]-r < coordinates.right &&
+        point[1]+r > coordinates.top &&
+        point[1]-r < coordinates.bottom) {
+      return true;
+    }
+
+    return false;
   }
 
-  function zoom(event, d) {
-    const focus0 = chart.focus;
+  function zoomTo(transform) {
+    let extent = [[-width/2, -height/2], [width/2, height/2]];
+    let visible = chart.root.descendants().slice(1)
+      .sort((a,b) => b.r - a.r)
+      .filter(d => containing(extent, transform.apply([d.x, d.y]), d.r*transform.k, true))
+      .filter(d => {
+        if (d.parent)
+          return transform.k * d.parent.r > 20
+          && transform.k * d.r > 2;
+        else
+          return true;
+      });
 
-    chart.focus = d;
-    focus = chart.focus;
 
-    const transition = svg.transition()
-        .duration(event.altKey ? 7500 : 750)
-        .tween('zoom', d => {
-          const i = d3.interpolateZoom(view, [focus.x, focus.y, focus.r * 2]);
-          return t => zoomTo(i(t));
-        });
+    nodeGroup.selectAll('circle')
+      .data(visible)
+      .join(
+        enter => enter.append('circle')
+          .attr('fill', d => d.children ? color(d.depth) : 'white')
+          .attr('r', d => transform.k * d.r)
+          .attr('transform', d => transform.translate(d.x, d.y).scale(1/transform.k))
+          .on('mouseover', function() { d3.select(this).attr('stroke', '#000'); })
+          .on('mouseout', function() { d3.select(this).attr('stroke', null); }),
+        update => update
+          .attr('fill', d => d.children ? color(d.depth) : 'white')
+          .attr('r', d => transform.k * d.r)
+          .attr('transform', d => transform.translate(d.x, d.y).scale(1/transform.k))
+          .attr('pointer-events', d => !d.children ? 'none' : null)
+          .on('click', (event, d) => focus !== d && (zoom(event, d), event.stopPropagation())),
+        exit => exit
+          .remove()
+      );
 
-    label
-      .filter(function(d) { return d.parent === focus || this.style.display === 'inline'; })
-      .transition(transition)
-        .style('fill-opacity', d => d.parent === focus ? 1 : 0)
-        .on('start', function(d) { if (d.parent === focus) this.style.display = 'inline'; })
-        .on('end', function(d) { if (d.parent !== focus) this.style.display = 'none'; });
+    let visibleLabels = visible
+      .filter(d => containing(extent, transform.apply([d.x, d.y])))
+      .slice(0, 10);
+    let vls = visibleLabels.map(d => d.data.name);
+    visibleLabels = visibleLabels
+      .filter(d => !d.children || !d.children.some(c => vls.includes(c.data.name)));
 
-    chart.zoomEvents.forEach(onZoom => onZoom(d));
+    labelGroup.selectAll('text')
+      .data(visibleLabels)
+      .join(
+        enter => enter.append('text'),
+        update => update
+          .text(d => d.data.name)
+          .attr('transform', d => transform.translate(d.x, d.y).scale(1/transform.k)),
+        exit => exit
+          .remove()
+      );
+
   }
 
   function zoomToCity(city) {
     let d = chart.root.descendants().find(d => d.data.name == city);
-
-    if (d !== undefined)
-      zoom({}, d.parent);
+    if (d !== undefined && d.parent) {
+      zoom.translateTo(svg, d.parent.x, d.parent.y)
+      zoom.scaleTo(svg, chart.root.r/d.parent.r)
+    }
   }
 
   function onZoom(f) {
