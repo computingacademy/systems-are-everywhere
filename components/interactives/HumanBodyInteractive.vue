@@ -2,9 +2,10 @@
   <div class="interactive">
     <div class="dragdrop body-systems-dragdrop">
       <div class="body-systems">
-        <DropZone class="blank-body" v-on:drop="addSystem($event)" snap="true" />
+        <DropZone class="blank-body" v-on:drop="addSystem($event)" snap="true" multiple="true" />
         <Draggable v-for="(system, index) in systems"
           class="body-system" v-bind:value="system.name" element="div"
+          :disabled="inBody(system)"
           :style="{zIndex: 100+system.index}"
           :spread="{from: [0.2, 0], to: [0.8, 1], index: index, count: systems.length}">
           <img :src="require('~/assets/images/human-body/'+system.image)">

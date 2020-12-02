@@ -8,10 +8,12 @@
 import interact from 'interactjs'
 
 export default {
-  props: ['snap'],
+  props: ['snap', 'multiple'],
   data() {
     return {
       hover: false,
+      contents: null,
+      value: null,
     }
   },
   mounted() {
@@ -26,27 +28,37 @@ export default {
 
       let obj = event.relatedTarget.__vue__
       vm.$emit('leave', obj.value)
+
+      if (obj == vm.contents)
+        vm.contents = null
     }
 
     function ondrop(event) {
       vm.hover = false 
 
-      let obj = event.relatedTarget.__vue__
+      let oldContents = vm.contents
+      vm.contents = event.relatedTarget.__vue__
+      vm.value = vm.contents.value
+
       if (vm.snap) {
-        obj.$nextTick(function() {
-          obj.x_ = vm.$el.offsetLeft + vm.$el.offsetWidth/2 - obj.$el.offsetWidth/2 - obj.$el.offsetLeft
-          obj.y_ = vm.$el.offsetTop + vm.$el.offsetHeight/2 - obj.$el.offsetHeight/2 - obj.$el.offsetTop
+        if (oldContents && !vm.multiple) {
+          oldContents.$nextTick(() => {
+            oldContents.x_ -= 20
+            oldContents.y_ -= 20
+          })
+        }
+        vm.contents.$nextTick(() => {
+          vm.contents.x_ = vm.$el.offsetLeft + vm.$el.offsetWidth/2 - vm.contents.$el.offsetWidth/2 - vm.contents.$el.offsetLeft
+          vm.contents.y_ = vm.$el.offsetTop + vm.$el.offsetHeight/2 - vm.contents.$el.offsetHeight/2 - vm.contents.$el.offsetTop
         })
       }
 
-      vm.$emit('drop', obj.value)
+      vm.$emit('drop', vm.value)
     }
 
     function onremove(event) {
-      vm.contains.splice(vm.contains.indexOf(event.target.__vue__), 1)
-
-      let obj = event.relatedTarget.__vue__
-      vm.$emit('remove', obj.value)
+      vm.contents = null
+      vm.$emit('remove', vm.value)
     }
 
     interact(vm.$el)

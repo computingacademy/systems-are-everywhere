@@ -9,7 +9,7 @@
 import interact from 'interactjs'
 
 export default {
-  props: ['value', 'element', 'x', 'y', 'spread'],
+  props: ['value', 'element', 'x', 'y', 'spread', 'disabled'],
   data() {
     let pos = this.spread ? this.spreadPos(this.spread) : {x: 0, y: 0}
 
@@ -33,8 +33,10 @@ export default {
 
       var target = event.target
       // keep the dragged position in the x/y attributes
-      vm.x_ += event.dx
-      vm.y_ += event.dy
+      if (!vm.disabled) {
+        vm.x_ += event.dx
+        vm.y_ += event.dy
+      }
     }
 
     interact(vm.$el)
@@ -49,6 +51,20 @@ export default {
 
       return {x, y}
     },
+  },
+  watch: {
+    disabled(disable) {
+      let vm = this
+
+      if (disable) {
+        interact(vm.$el).unset();
+      } else if (!interact.isSet(vm.$el)) {
+        interact(vm.$el)
+          .draggable({
+            listeners: { move: dragMoveListener }
+          })
+      }
+    }
   }
 }
 </script>

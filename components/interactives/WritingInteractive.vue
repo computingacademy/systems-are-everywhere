@@ -10,7 +10,7 @@
         <h1>My best</h1>
         <div class="blanks">
           <DropZone v-for="(letter, index) in letters"
-            class="blank" v-on:drop="addLetter(index, $event)" snap="true" />
+            class="blank" v-on:drop="addLetter(index, $event)" removeLetter="(index, $event)" snap="true" />
         </div>
       </div>
     </div>
@@ -35,7 +35,11 @@ export default {
       let word = this.blanks.join('')
       if (this.words.indexOf(word) !== -1)
         this.$parent.$emit('complete')
-    }
+    },
+    removedLetter(index, value) {
+      if (this.blanks[index] == value)
+        this.blanks[index] = null 
+    },
   }
 }
 </script>

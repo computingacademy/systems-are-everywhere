@@ -3,7 +3,7 @@
     <div class="dragdrop recipe-dragdrop">
       <div class="recipe-steps">
         <DropZone v-for="(step, index) in steps"
-          class="blank-step" v-on:drop="addStep(index, $event)" snap="true" />
+          class="blank-step" v-on:drop="addStep(index, $event)" v-on:leave="removeStep(index, $event)" snap="true" />
       </div>
       <Draggable v-for="(step, index) in steps"
         class="recipe-step" v-bind:value="step.index" element="div"
@@ -36,7 +36,11 @@ export default {
       let inOrder = this.steps.every((step, index) => blankSteps[index] == index)
       if (inOrder)
         this.$parent.$emit('complete')
-    }
+    },
+    removeStep(index, value) {
+      if (this.blankSteps[index] == value)
+        this.blankSteps[index] = null 
+    },
   }
 }
 </script>
