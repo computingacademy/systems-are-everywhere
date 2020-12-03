@@ -3,13 +3,13 @@ export default {
   target: 'static',
 
   router: {
-    base: '/systems-are-everywhere/dist/',
+    base: '/resources/systems-are-among-us/activity/',
     trailingSlash: true
   },
 
   // Global page headers (https://go.nuxtjs.dev/config-head)
   head: {
-    title: 'systems-are-everywhere',
+    title: 'Systems are Among Us',
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
@@ -46,5 +46,6 @@ export default {
 
   // Build Configuration (https://go.nuxtjs.dev/config-build)
   build: {
+    publicPath: 'assets/',
   }
 }
