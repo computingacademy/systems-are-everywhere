@@ -2,10 +2,10 @@
   <div class="slide">
     <div class="content">
       <h1 class="main-title">
-        Systems are <em>everywhere</em>
+        Systems are among us
       </h1>
       <h2 class="main-subtitle">
-        So get with the systems!
+        Watch out for the systems around you!
       </h2>
     </div>
     <NavBar></NavBar>
