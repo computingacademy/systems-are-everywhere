@@ -133,11 +133,15 @@ let chart = function(element) {
     }
   }
 
+  function zoomToLevel(level) {
+    zoom.scaleTo(svg, level)
+  }
+
   function onZoom(f) {
     chart.zoomEvents.push(f);
   }
 
-  return {chart, zoomToCity, onZoom};
+  return {chart, zoomToCity, zoomToLevel, onZoom};
 }
 
 export default chart
