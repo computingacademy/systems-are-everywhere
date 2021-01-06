@@ -7,7 +7,7 @@
         :spread="{from: [0.3, 0.3], to: [0.7, 0.7], index: index, count: pictures.length}">
         <img :src="require('~/assets/images/branches/'+picture.image)">
       </Draggable>
-      <DropZone v-for="system in systems"
+      <DropZone v-for="system in systems" :key="system"
         class="system"
         v-on:drop="checkPicture(system, $event)"
         v-on:leave="resetPicture($event)">
@@ -73,7 +73,7 @@ export default {
   flex-wrap: wrap;
 }
 
-.system {
+.branches .system {
   width: 50%;
   background: white;
   border: 2px solid black;
@@ -83,11 +83,11 @@ export default {
   justify-content: center;
 
 }
-.system.hover {
+.branches .system.hover {
   background: gold;
 }
 
-.system .label {
+.branches .system .label {
   padding: 0px 5px;
   border-radius: 5px;
 
@@ -98,22 +98,22 @@ export default {
   z-index: 30;
 }
 
-.picture {
+.branches .picture {
   padding: 0px;
   line-height: 0;
 }
 
-.picture img {
+.branches .picture img {
   filter: grayscale(100%);
 }
 
-.correct img {
+.branches .correct img {
   filter: initial;
 }
-.incorrect img {
+.branches .incorrect img {
   opacity: 0.5;
 }
-.incorrect {
+.branches .incorrect {
   background-color: red;
 }
 </style>

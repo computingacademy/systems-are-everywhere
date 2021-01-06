@@ -1,11 +1,11 @@
 <template>
-  <div class="interactive">
+  <div class="interactive recipes">
     <div class="dragdrop recipe-dragdrop">
       <div class="recipe-steps">
-        <DropZone v-for="(step, index) in steps"
+        <DropZone v-for="(step, index) in steps"  :key="step.index"
           class="blank-step" v-on:drop="addStep(index, $event)" v-on:leave="removeStep(index, $event)" snap="true" />
       </div>
-      <Draggable v-for="(step, index) in steps"
+      <Draggable v-for="(step, index) in steps" :key="step.index"
         class="recipe-step" v-bind:value="step.index" element="div"
         :spread="{from: [0.3, 0], to: [0.3, 0.6], index: index, count: steps.length}">
         <img :src="require('~/assets/images/recipe/'+step.image)">
@@ -46,16 +46,16 @@ export default {
 </script>
 
 <style>
-.recipe-dragdrop {
+.recipes .recipe-dragdrop {
   display: flex;
 }
 
-.recipe-steps {
+.recipes .recipe-steps {
   width: 300px;
   margin: auto;
 }
 
-.recipe-step {
+.recipes .recipe-step {
   display: flex !important;
   flex-direction: row;
   align-items: center;
@@ -67,18 +67,18 @@ export default {
   z-index: 100;
 }
 
-.recipe-step img {
+.recipes .recipe-step img {
   margin-right: 5px;
   height: 40px;
 }
 
-.blank-step {
+.recipes .blank-step {
   display: block;
   height: 50px;
   background: white;
   border: 2px solid black;
 }
-.blank-step.hover {
+.recipes .blank-step.hover {
   background: gold;
 }
 </style>

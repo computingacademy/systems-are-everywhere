@@ -4,7 +4,7 @@
       <h1 class="section-title">
         Systems help us <em>understand other systems</em>
       </h1>
-      <video height="450" autoplay muted>
+      <video height="400" autoplay muted>
         <source src="~assets/video/understand.mp4" type="video/mp4">
       </video>
     </div>
@@ -14,9 +14,3 @@
 
 <script>
 </script>
-
-<style scoped>
-.section-title {
-  font-size: 32px;
-}
-</style>

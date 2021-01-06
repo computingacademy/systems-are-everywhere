@@ -2,6 +2,14 @@ export default {
   // Target (https://go.nuxtjs.dev/config-target)
   target: 'static',
 
+  // this should be removed on the ACA branch
+  server: {
+    port: 5555,
+    host: '0.0.0.0',
+  },
+
+  // this needs to be updated for the ACA website. There is a separate branch.
+  // Copy generated files to the relevant ACA folder.
   router: {
     base: '/systems-are-everywhere/dist/',
     trailingSlash: true

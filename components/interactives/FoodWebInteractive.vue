@@ -131,4 +131,4 @@ export default {
 
 <style>
 
-</stlye>
+</style>

@@ -1,17 +1,17 @@
 <template>
-  <div class="interactive">
+  <div class="interactive writing">
     <div class="dragdrop">
-      <Draggable v-for="(letter, index) in letters"
+      <Draggable v-for="(letter, index) in letters" :key="letter"
         class="letter" v-bind:value="letter" element="div"
         :spread="{from: [0.1, 0.3], to: [0.9, 0.7], index: index, count: letters.length}">
         {{ letter }}
       </Draggable>
       <div class="book">
-        <h1>My best</h1>
         <div class="blanks">
-          <DropZone v-for="(letter, index) in letters"
+          <DropZone v-for="(letter, index) in letters"  :key="letter"
             class="blank" v-on:drop="addLetter(index, $event)" removeLetter="(index, $event)" snap="true" />
         </div>
+        <h1>goes to School</h1>
       </div>
     </div>
   </div>
@@ -21,9 +21,9 @@
 export default {
   data() {
     return {
-      letters: 'AMTE',
+      letters: 'TPOS',
       blanks: [],
-      words: ['MATE', 'TEAM', 'MEAT'],
+      words: ['SPOT'],
     }
   },
   methods: {
@@ -45,8 +45,8 @@ export default {
 </script>
 
 <style>
-.book {
-  background: url('~assets/images/book.png');
+.writing .book {
+  background: url('~assets/images/writing/book.png');
   background-repeat: no-repeat;
   background-size: contain;
   background-position: center;
@@ -58,13 +58,13 @@ export default {
   text-align: center;
 }
 
-.book > h1 {
-  color: gold;
+.writing .book > h1 {
+  color: white;
   font-weight: bold;
   margin-bottom: 20px;
 }
 
-.letter {
+.writing .letter {
   width: 35px;
   margin: 0px;
   background-color: white;
@@ -76,14 +76,14 @@ export default {
   text-align: center;
 }
 
-.blank {
+.writing .blank {
   display: inline-block;
   width: 35px;
   height: 50px;
   background: white;
   border: 2px solid black;
 }
-.blank.hover {
+.writing .blank.hover {
   background: gold;
 }
 </style>

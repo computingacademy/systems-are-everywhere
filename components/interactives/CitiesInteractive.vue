@@ -1,8 +1,9 @@
 <template>
   <div class="interactive">
     <svg viewBox="0 0 340 340">
-      <image :href="require('~/assets/images/australia-night.jpg')" width="340" height="340"></image>
+      <image :href="require('~/assets/images/cities/australia-night.jpg')" width="340" height="340"></image>
       <g v-for="city in cities"
+        :key="city.name"
         :class="{city: true, hidden: city.hidden}"
         :style="{transform: 'translate('+city.x+'px, '+city.y+'px)'}">
         <circle r="10"

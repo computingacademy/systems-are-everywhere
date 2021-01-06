@@ -2,14 +2,10 @@
   <InteractivePage
     title="Communities contain <em><small>smaller communities</small></em>"
     subtitle="Communities"
-    instructions="Zoom out to see all of the communities"
-    next="../../understand-other-systems/">
+    instructions="Zoom out to see all of the communities">
     <CommunitiesInteractive />
   </InteractivePage>
 </template>
 
-<style>
-.slide .title {
-  font-size: 38px;
-}
-</style>
+<script>
+</script>

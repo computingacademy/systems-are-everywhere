@@ -2,11 +2,8 @@
   <div class="slide main-slide">
     <div class="content">
       <h1 class="main-title">
-        But <em>what</em> are systems?
+        <em>Systems</em> are in your <em>books</em>...
       </h1>
-      <h2 class="main-subtitle">
-        Let's look at some examples...
-      </h2>
     </div>
     <NavBar />
   </div>

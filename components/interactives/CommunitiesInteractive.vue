@@ -1,5 +1,5 @@
 <template>
-  <div class="interactive">
+  <div class="interactive communities">
     <svg>
     </svg>
     <Slider v-model="level" :step="1" :min="0" :max="maxLevel" @input="zoom" show-tip="never"></Slider>
@@ -44,18 +44,19 @@ export default {
 </script>
 
 <style>
-.interactive > svg {
+
+.interactive.communities > svg {
   height: 100%;
   width: 100%;
   background-color: #ddaa88;
 }
 
-.ivu-slider-wrap, .ivu-slider-bar {
+.communities .ivu-slider-wrap, .ivu-slider-bar {
   height: 22px;
   border-radius: 20px;
 }
 
-.ivu-slider-button-wrap, .ivu-slider-button {
+.communities .ivu-slider-button-wrap, .ivu-slider-button {
   width: 30px;
   height: 30px;
 }

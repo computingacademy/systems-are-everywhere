@@ -1,9 +1,9 @@
 <template>
-  <div class="interactive">
+  <div class="interactive human-body">
     <div class="dragdrop body-systems-dragdrop">
       <div class="body-systems">
         <DropZone class="blank-body" v-on:drop="addSystem($event)" snap="true" multiple="true" />
-        <Draggable v-for="(system, index) in systems"
+        <Draggable v-for="(system, index) in systems" :key="system.name"
           class="body-system" v-bind:value="system.name" element="div"
           :disabled="inBody(system)"
           :style="{zIndex: 100+system.index}"
@@ -46,16 +46,16 @@ export default {
 </script>
 
 <style>
-.body-systems-dragdrop {
+.human-body .body-systems-dragdrop {
   display: block;
 }
 
-.body-systems {
+.human-body .body-systems {
   display: flex;
   flex-direction: row;
 }
 
-.body-system {
+.human-body .body-system {
   text-align: center;
   width: 170px;
   padding: 10px;
@@ -64,24 +64,28 @@ export default {
   box-shadow: 2px 2px 4px rgba(40,20,0, 0.2);
 }
 
-.body-system img {
-  height: 140px; 
+.human-body .body-system img {
+  height: 140px;
 }
 
-.body-system h3 {
+.human-body .body-system h3 {
   font-size: 16px;
 }
 
-.blank-body {
+.human-body .blank-body {
   text-align: left;
   display: block;
   height: 180px;
   width: 170px;
   margin: auto;
-  background: white;
+  background-color: white;
+  background-image: url('~assets/images/human-body/Body_Empty.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
   border: 2px solid black;
 }
-.blank-body.hover {
+.human-body .blank-body.hover {
   background: gold;
 }
 </style>

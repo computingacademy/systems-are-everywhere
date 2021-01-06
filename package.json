@@ -16,11 +16,12 @@
     "interactjs": "^1.10.0",
     "iview": "^3.5.4",
     "matter-js": "^0.14.2",
-    "nuxt": "^2.14.5",
+    "nuxt": "^2.14.11",
     "piano-chart": "^1.5.0",
     "tone": "^14.7.58",
-    "vis-data": "^7.1.0",
-    "vis-network": "^8.5.2"
+    "vis-data": "^7.1.1",
+    "vis-network": "^8.5.4",
+    "vis-util": "^4.0.0"
   },
   "devDependencies": {
     "@nuxt/types": "^2.14.5",

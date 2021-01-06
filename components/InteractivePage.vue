@@ -2,18 +2,20 @@
   <div class="slide">
     <div class="content">
       <h1 class="title" v-html="title"></h1>
-      <transition name="swap-instructions" v-for="(instruction, index) in instructions_">
-        <h2 class="instructions" v-html="instruction" v-if="index == step"></h2>
-      </transition>
-      <transition name="swap-instructions">
-        <h2 class="instructions" v-if="step >= instructions_.length">
-          <em>Task complete!</em>
-        </h2>
-      </transition>
       <slot></slot>
+      <div class="instructions-container">
+        <transition name="swap-instructions" v-for="(instruction, index) in instructions_" :key="instruction">
+          <h2 class="instructions" v-html="instruction" v-if="index == step"></h2>
+        </transition>
+        <transition name="swap-instructions">
+          <h2 class="instructions" v-if="step >= instructions_.length">
+            <em>Task complete!</em>
+          </h2>
+        </transition>
+      </div>
+      <NavBar :completed="completed"/>
       <h3 class="subtitle" v-html="subtitle"></h3>
     </div>
-    <NavBar :completed="completed"/>
   </div>
 </template>
 
@@ -38,7 +40,10 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
+.instructions-container {
+  text-align:right;
+}
 .swap-instructions-enter-active {
   display: inline-block;
   overflow: hidden;
@@ -53,6 +58,7 @@ export default {
   white-space: nowrap;
   text-overflow: clip;
   width: 0px;
+  text-align: center;
 }
 .swap-instructions-leave-to, .swap-instructions-leave-active {
   display: none;

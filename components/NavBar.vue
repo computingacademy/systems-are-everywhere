@@ -1,11 +1,11 @@
 <template>
   <nav class="navbar">
     <div class="progress">
-      <Tooltip v-for="section in sections" :content="section.title" placement="top">
+      <Tooltip v-for="section in sections" :key="section.title" :content="section.title" placement="top">
         <div :class="['section', section.slides[0].path == currentSlide.path ? 'open' : '']">
-            <Tooltip v-for="(slide, index) in section.slides" v-if="currentSection(section) || index == 0"
+            <Tooltip v-for="(slide, index) in section.slides" :key="slide.title" v-if="currentSection(section) || index == 0"
               :content="slide.title" placement="bottom">
-              <nuxt-link :class="['slide', slide.type, slide.completed ? 'completed' : '']" :to="slide.path"></nuxt-link>
+              <nuxt-link :class="['slide', slide.type, currentSection(section) ? 'opened' : '', slide.completed ? 'completed' : '']" :to="slide.path"></nuxt-link>
             </Tooltip>
         </div>
       </Tooltip>
@@ -23,14 +23,16 @@ let sections = [
   {
     title: 'Introduction',
     slides: [
-      {type: 'title-slide', path: '/', title: 'Systems are among us'},
+      {type: 'title-slide', path: '/', title: 'Systems are everywhere'},
     ],
   },
   {
     title: 'Examples',
     slides: [
       {type: 'title-slide', path: '/examples/', title: 'What are systems?'},
+      {path: '/examples/books/', title: 'Books', type: 'title-slide'},
       {path: '/examples/writing/', title: 'Writing', type: 'interactive-slide'},
+      {path: '/examples/libraries/', title: 'Libraries', type: 'title-slide'},
       {path: '/examples/space/', title: 'Space', type: 'interactive-slide'},
       {path: '/examples/human-body/', title: 'Human Body', type: 'interactive-slide'},
     ]
@@ -52,7 +54,7 @@ let sections = [
   {
     title: 'Relationships',
     slides: [
-      {path: '/relationships/', title: 'Have relationships', type: 'section-slide'},
+      {type: 'section-slide', path: '/relationships/', title: 'Have relationships'},
       {path: '/relationships/food-web/', title: 'Food web', type: 'interactive-slide'},
     ],
   },

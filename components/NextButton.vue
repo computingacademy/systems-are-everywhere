@@ -1,6 +1,6 @@
 <template>
   <Button type="primary" rel="noopener noreferrer" v-bind:to="to">
-    Next
+    <strong>NEXT</strong>
     <Icon type="ios-arrow-forward" />
   </Button>
 </template>
