@@ -2,15 +2,19 @@
   <div class="interactive recipes">
     <div class="dragdrop recipe-dragdrop">
       <div class="recipe-steps">
-        <DropZone v-for="(step, index) in steps"  :key="step.index"
-          class="blank-step" v-on:drop="addStep(index, $event)" v-on:leave="removeStep(index, $event)" snap="true" />
+        <div v-for="(step, index) in steps" :key="step">
+          <h2 class="subtitle step-position">{{index+1}}.</h2>
+          <DropZone 
+            class="blank-step" v-on:drop="addStep(index, $event)" v-on:leave="removeStep(index, $event)" snap="true" />
+        </div>
       </div>
       <Draggable v-for="(step, index) in steps" :key="step.index"
         class="recipe-step" v-bind:value="step.index" element="div"
-        :spread="{from: [0.3, 0], to: [0.3, 0.6], index: index, count: steps.length}">
+        :spread="{from: [0.8, 0], to: [0.8, 0.8], index: index, count: steps.length}">
         <img :src="require('~/assets/images/recipe/'+step.image)">
         {{ step.step }}
       </Draggable>
+      <img id="finished" src="~/assets/images/recipe/Cake.png">
     </div>
   </div>
 </template>
@@ -34,8 +38,14 @@ export default {
       let blankSteps = this.blankSteps
       blankSteps[index] = value 
       let inOrder = this.steps.every((step, index) => blankSteps[index] == index)
-      if (inOrder)
+      if (inOrder) {
         this.$parent.$emit('complete')
+        setTimeout(() => {
+          // show cake
+          document.getElementById("finished").style.display = "inline-block";
+          display: inline-block;
+        }, 500)
+      }
     },
     removeStep(index, value) {
       if (this.blankSteps[index] == value)
@@ -46,13 +56,31 @@ export default {
 </script>
 
 <style>
+.recipes #finished {
+  width: 300px;
+  height: 200px;
+  z-index: 80;
+  margin-left: 60px;
+  margin-top: 40px;
+  overflow: visible;
+  display: none;
+}
+
+.recipes .step-position {
+  display: inline-block;
+  margin-top: 20px;
+  height: 50px;
+  float: left;
+  margin-left: -30px;
+}
+
 .recipes .recipe-dragdrop {
   display: flex;
 }
 
 .recipes .recipe-steps {
   width: 300px;
-  margin: auto;
+  margin-left: 40px;
 }
 
 .recipes .recipe-step {
@@ -60,6 +88,7 @@ export default {
   flex-direction: row;
   align-items: center;
   padding: 4px;
+  width: 320px;
 
   font-size: 20px;
   background-color: white;
@@ -68,15 +97,16 @@ export default {
 }
 
 .recipes .recipe-step img {
-  margin-right: 5px;
+  margin-right: 8px;
   height: 40px;
 }
 
 .recipes .blank-step {
   display: block;
   height: 50px;
+  width: 310px;
   background: white;
-  border: 2px solid black;
+  border-bottom: 1px solid #999999;
 }
 .recipes .blank-step.hover {
   background: gold;

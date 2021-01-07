@@ -47,7 +47,7 @@ body {
   justify-content: center;
 }
 
-.main-title, .main-subtitle, .instructions, .progress, .navbar, .section-title, .title, .subtitle, .label, .book, .letter {
+.main-title, .main-subtitle, .instructions, .progress, .navbar, .section-title, .title, .subtitle, .label, .book, .letter, .body-system, .recipe-step {
   font-family:
   'Quicksand',
   'Source Sans Pro',

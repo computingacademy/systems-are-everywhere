@@ -2,7 +2,7 @@
   <div class="slide main-slide">
     <div class="content">
       <div class="title-container">
-        <img class="robot" src="~assets/images/zoom.png">
+        <img class="robot" src="~assets/images/robot/zoom.png">
         <h1 class="main-title">
           Systems are Everywhere!
         </h1>

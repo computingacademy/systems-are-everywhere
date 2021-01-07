@@ -51,13 +51,25 @@ export default {
   background-color: #ddaa88;
 }
 
-.communities .ivu-slider-wrap, .ivu-slider-bar {
-  height: 22px;
-  border-radius: 20px;
+.ivu-slider-wrap, .ivu-slider-bar {
+  height: 16px;
+  border-radius: 12px;
 }
 
-.communities .ivu-slider-button-wrap, .ivu-slider-button {
-  width: 30px;
-  height: 30px;
+.ivu-slider-button-wrap, .ivu-slider-button {
+  width: 24px;
+  height: 24px;
 }
+
+.ivu-slider-bar {
+  background-color: #49bd9a;
+}
+
+.ivu-slider-button {
+  background-color: #49bd9a;
+  border: 1px solid #49bd9a;
+}
+
+</style>
+
 </style>

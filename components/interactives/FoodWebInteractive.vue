@@ -15,14 +15,12 @@ export default {
         name: 'wattle'
       }, {
         name: 'grass'
-      }, {
-        name: 'gumtree'
-      }, {
+      },{
         name: 'grasshopper',
         eats: ['grass'],
       }, {
         name: 'termite',
-        eats: ['wattle', 'gumtree', 'grass'],
+        eats: ['wattle', 'grass'],
       }, {
         name: 'emu',
         eats: ['grasshopper'],
@@ -30,29 +28,8 @@ export default {
         name: 'echidna',
         eats: ['termite'],
       }, {
-        name: 'lizard',
-        eats: ['wattle'],
-      }, {
-        name: 'wombat',
-        eats: ['grass'],
-      }, {
-        name: 'kangaroo',
-        eats: ['grass'],
-      }, {
-        name: 'honey-eater',
-        eats: ['gumtree'],
-      }, {
         name: 'magpie',
         eats: ['termite', 'grasshopper'],
-      }, {
-        name: 'kookaburra',
-        eats: ['termite', 'lizard'],
-      }, {
-        name: 'falcon',
-        eats: ['lizard'],
-      }, {
-        name: 'dingo',
-        eats: ['echidna', 'emu'],
       }],
     }
   },

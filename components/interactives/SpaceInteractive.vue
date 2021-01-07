@@ -2,10 +2,10 @@
   <div class="interactive">
     <svg viewBox="0 0 720 300">
       <g class="planets">
-        <circle v-for="planet in planets"
+        <circle v-for="planet in planets" :key="planet"
           class="orbit" :r="planet.distance"></circle>
         <path class="orbit-progress" :d="`M ${earth.distance} 0 A ${earth.distance} ${earth.distance} ${time/365*360} ${time/365 < 0.5 ? 0 : 1} 1 ${position(earth).x} ${position(earth).y}`"></path>
-        <g v-for="planet in planets"
+        <g v-for="planet in planets" :key="planet"
           class="planet"
           :style="{transform: 'translate('+position(planet).x+'px ,'+position(planet).y+'px)'}">
           <text class="text-background":dx="0" :dy="-planet.size - 2">{{ planet.name }}</text>

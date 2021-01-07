@@ -1,7 +1,7 @@
 <template>
   <InteractivePage
-    title="Pendulums are <em>tricky</em>"
-    subtitle="Physics and chaos"
+    title="Not all pendulums are the same"
+    subtitle="Small differences can have big effects!"
     instructions="Swing the pendulums">
     <PendulumInteractive />
   </InteractivePage>
