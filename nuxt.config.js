@@ -2,7 +2,7 @@ export default {
   // Target (https://go.nuxtjs.dev/config-target)
   target: 'static',
 
-  // this should be removed on the ACA branch
+  // for access on local network
   server: {
     port: 5555,
     host: '0.0.0.0',
