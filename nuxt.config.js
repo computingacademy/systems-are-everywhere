@@ -11,13 +11,13 @@ export default {
   // this needs to be updated for the ACA website. There is a separate branch.
   // Copy generated files to the relevant ACA folder.
   router: {
-    base: '/systems-are-everywhere/dist/',
+    base: '/resources/systems-are-everywhere/activity/',
     trailingSlash: true
   },
 
   // Global page headers (https://go.nuxtjs.dev/config-head)
   head: {
-    title: 'systems-are-everywhere',
+    title: 'Systems Are Everywhere',
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },

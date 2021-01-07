@@ -3,7 +3,7 @@
     <div class="dragdrop">
       <Draggable v-for="(letter, index) in letters" :key="letter"
         class="letter" v-bind:value="letter" element="div"
-        :spread="{from: [0.1, 0.3], to: [0.9, 0.7], index: index, count: letters.length}">
+        :spread="{from: [0.1, 0.3], to: [0.4, 0.7], index: index, count: letters.length}">
         {{ letter }}
       </Draggable>
       <div class="book">
