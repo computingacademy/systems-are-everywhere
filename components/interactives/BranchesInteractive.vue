@@ -94,6 +94,10 @@ export default {
 
 }
 
+.branches .system.hover {
+  background: gold;
+}
+
 .branches .system .label {
   padding: 0px 5px;
   border-radius: 5px;
