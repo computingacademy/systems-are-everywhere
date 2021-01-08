@@ -2,7 +2,7 @@
   <InteractivePage
     title="Communities contain <em><small>smaller communities</small></em>"
     subtitle="Communities"
-    instructions="Zoom out to see all of the communities">
+    instructions="Use the slider to zoom all the way in and out.">
     <CommunitiesInteractive />
   </InteractivePage>
 </template>

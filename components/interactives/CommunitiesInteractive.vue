@@ -7,13 +7,13 @@
 </template>
 
 <script>
-import {getGeo} from 'geoplugin';
+import {getGeoByIp} from 'geoplugin';
 import circleChart from '~/assets/js/circle-packing'
 
 export default {
   data() {
     return {
-      level: 0,
+      level: 50,
       maxLevel: 100,
       states: [],
       suburbs: [],
@@ -23,14 +23,24 @@ export default {
     let vm = this
     vm.chart = circleChart(vm.$el.querySelector('svg'))
 
-    getGeo()
-      .then(response => response.city)
+    let myIp = fetch(`https://api.ipify.org`)
+
+    var zoom_complete = [false,false,false]
+
+    getGeoByIp(myIp)
+      .then(response => 'Adelaide') // hack to ensure Adelaide is always in the centre
       .catch(error => 'Adelaide')
       .then(vm.chart.zoomToCity)
       .then(() => this.chart.zoomToLevel(this.maxLevel-this.level))
 
     vm.chart.onZoom(event => {
-      if (event.transform.k < 1)
+      if (event.transform.k == 50 && !zoom_complete[0])
+        zoom_complete[0] = true
+      if (event.transform.k < 1 && zoom_complete[0])
+        zoom_complete[1] = true
+      if (event.transform.k > 100 && zoom_complete[0])
+        zoom_complete[2] = true
+      if (zoom_complete[0] && zoom_complete[1] && zoom_complete[2])
         vm.$parent.$emit('complete')
     })
 

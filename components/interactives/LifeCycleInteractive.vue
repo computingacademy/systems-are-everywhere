@@ -24,7 +24,7 @@ export default {
       }, {
         name: 'egg',
         next: 'caterpillar',
-      }],
+      }]
     }
   },
   mounted() {
@@ -92,15 +92,28 @@ export default {
               data.edges.remove(edge.id)
           })
 
-
-          let allStages = vm.stages.every(organism => {
+          for (var i = 0; i <= this.$parent.instructions.length; i++) {
+            let targets = [3,2,0,1]
+            let organism = vm.stages[targets[i]]
             let node = network.body.nodes[organism.name]
             let edge = node.edges.find(e => e.fromId == node.id)
-            return edge && edge.toId == organism.next
-          })
-          
-          if (allStages)
-            vm.$parent.$emit('complete')
+            let stage = edge && edge.toId == organism.next
+            if (!stage) {
+              vm.$parent.$emit('jump',i)
+              break;
+            } else {
+              let allStages = vm.stages.every(organism => {
+                let node = network.body.nodes[organism.name]
+                let edge = node.edges.find(e => e.fromId == node.id)
+                return edge && edge.toId == organism.next
+              })
+              if (allStages) {
+                vm.$parent.$emit('jump',3)
+                vm.$parent.$emit('complete')
+                break;
+              }
+            }
+          }
 
           network.addEdgeMode()
         }

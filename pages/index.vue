@@ -7,11 +7,8 @@
           Systems are Everywhere!
         </h1>
       </div>
-      <h2 class="main-subtitle">
-        <em>Can you find them?</em>
-      </h2>
     </div>
-    <NavBar></NavBar>
+    <NavBar />
   </div>
 </template>
 

@@ -82,6 +82,7 @@ export default {
   margin-left: 200px;
   overflow: visible;
   display: none;
+  background-color: white;
 }
 
 .human-body .body-system img {

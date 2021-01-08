@@ -36,6 +36,12 @@ export default {
       if (this.step == this.instructions_.length)
         vm.completed = true
     })
+    this.$on('backup', function() {
+      this.step--
+    })
+    this.$on('jump', function(index) {
+      this.step = index
+    })
   },
 }
 </script>

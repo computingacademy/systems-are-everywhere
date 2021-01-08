@@ -68,7 +68,8 @@ export default {
   width: 35px;
   margin: 0px;
   background-color: white;
-  box-shadow: -2px 2px 4px rgba(0,0,0, 0.3);
+  border: 1px solid #DDDDDD;
+  /*box-shadow: -1px 1px 2px rgba(0,0,0, 0.1);*/
   z-index: 100;
 
   font-size: 40px;

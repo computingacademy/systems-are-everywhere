@@ -10,7 +10,7 @@
       </div>
       <Draggable v-for="(step, index) in steps" :key="step.index"
         class="recipe-step" v-bind:value="step.index" element="div"
-        :spread="{from: [0.8, 0], to: [0.8, 0.8], index: index, count: steps.length}">
+        :spread="{from: [0.8, 0.1], to: [0.8, 0.9], index: index, count: steps.length}">
         <img :src="require('~/assets/images/recipe/'+step.image)">
         {{ step.step }}
       </Draggable>

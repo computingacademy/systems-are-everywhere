@@ -1,6 +1,6 @@
 const getGeo = () => {
   return new Promise((resolve, reject) => {
-    fetch("https://www.geoplugin.net/json.gp")
+    fetch("http://www.geoplugin.net/json.gp")
       .then((response) => response.json())
       .then((data) => {
         let geo = {
@@ -36,7 +36,7 @@ const getGeo = () => {
 };
 const getGeoByIp = (ip) => {
   return new Promise((resolve, reject) => {
-    fetch(`https://www.geoplugin.net/json.gp?ip=${ip}`)
+    fetch(`http://www.geoplugin.net/json.gp?ip=${ip}`)
       .then((response) => response.json())
       .then((data) => {
         let geo = {
