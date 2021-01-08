@@ -54,20 +54,13 @@ export default {
   methods: {
     checkPicture(system, picture) {
       picture.correct = picture.system == system
+      let allCorrect = this.pictures.every(picture => picture.correct)
+        if (allCorrect)
+          this.$parent.$emit('complete')
       this.$forceUpdate();
     },
     resetPicture(picture) {
       this.$set(picture, 'correct', undefined)
-    },
-  },
-  watch: {
-    pictures: {
-      handler: function(pictures) {
-        let allCorrect = pictures.every(picture => picture.correct)
-        if (allCorrect)
-          this.$parent.$emit('complete')
-      },
-      deep:true,
     },
   },
 }
