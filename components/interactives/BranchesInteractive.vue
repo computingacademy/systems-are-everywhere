@@ -79,7 +79,12 @@ export default {
 .branches .system {
   width: 50%;
   background: white;
-  border: 2px solid black;
+  box-shadow: 
+    2px 0 0 0 black, 
+    0 2px 0 0 black, 
+    2px 2px 0 0 black,   /* Just to fix the corner */
+    2px 0 0 0 black inset, 
+    0 2px 0 0 black inset;
 
   display: flex;
   align-items: center;

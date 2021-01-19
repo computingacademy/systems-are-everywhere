@@ -3,12 +3,9 @@
     <div class="content">
       <div class="title-container">
         <h1 class="main-title">
-          But what are systems?
+          Let's take a look at some <em>systems</em>...
         </h1>
       </div>
-      <h2 class="main-subtitle">
-        Let's look at some examples...
-      </h2>
     </div>
     <NavBar />
   </div>

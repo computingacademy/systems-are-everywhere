@@ -25,23 +25,21 @@ export default {
 
     let myIp = fetch(`https://api.ipify.org`)
 
-    var zoom_complete = [false,false,false]
-
     getGeoByIp(myIp)
       .then(response => 'Adelaide') // hack to ensure Adelaide is always in the centre
       .catch(error => 'Adelaide')
       .then(vm.chart.zoomToCity)
       .then(() => this.chart.zoomToLevel(this.maxLevel-this.level))
 
+    var zoom_complete = false
+
     vm.chart.onZoom(event => {
-      if (event.transform.k == 50 && !zoom_complete[0])
-        zoom_complete[0] = true
-      if (event.transform.k < 1 && zoom_complete[0])
-        zoom_complete[1] = true
-      if (event.transform.k > 100 && zoom_complete[0])
-        zoom_complete[2] = true
-      if (zoom_complete[0] && zoom_complete[1] && zoom_complete[2])
+      if (event.transform.k < 1 && zoom_complete && this.$parent.step == 0)
         vm.$parent.$emit('complete')
+      if (event.transform.k > 100 && zoom_complete && this.$parent.step == 1)
+        vm.$parent.$emit('complete')
+      if (event.transform.k == 50 && !zoom_complete[0])
+        zoom_complete = true
     })
 
   },

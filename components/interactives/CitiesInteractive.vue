@@ -1,7 +1,7 @@
 <template>
   <div class="interactive">
-    <svg viewBox="0 0 340 340">
-      <image :href="require('~/assets/images/cities/australia-night.jpg')" width="340" height="340"></image>
+    <svg viewBox="0 0 415 340">
+      <image :href="require('~/assets/images/cities/australia-night.jpg')" width="415" height="340"></image>
       <g v-for="city in cities"
         :key="city.name"
         :class="{city: true, hidden: city.hidden}"
@@ -20,35 +20,35 @@ export default {
     return {
       cities: [{
         name: 'Sydney',
-        x: 300, y: 215,
+        x: 365, y: 230,
         hidden: true,
       }, {
         name: 'Melbourne',
-        x: 255, y: 245,
+        x: 315, y: 260,
         hidden: true,
       }, {
         name: 'Brisbane',
-        x: 315, y: 170,
+        x: 380, y: 170,
         hidden: true,
       }, {
         name: 'Perth',
-        x: 50, y: 205,
+        x: 55, y: 210,
         hidden: true,
       }, {
         name: 'Adelaide',
-        x: 210, y: 220,
+        x: 260, y: 235,
         hidden: true,
       }, {
         name: 'Hobart',
-        x: 275, y: 280,
+        x: 335, y: 310,
         hidden: true,
       }, {
         name: 'Darwin',
-        x: 155, y: 65,
+        x: 195, y: 40,
         hidden: true,
       }, {
         name: 'Canberra',
-        x: 285, y: 225,
+        x: 350, y: 240,
         hidden: true,
       }],
     }

@@ -3,7 +3,7 @@
     <div class="dragdrop recipe-dragdrop">
       <div class="recipe-steps">
         <div v-for="(step, index) in steps" :key="step">
-          <h2 class="subtitle step-position">{{index+1}}.</h2>
+          <h2 class="subtitle step-position">{{index+1}} </h2>
           <DropZone 
             class="blank-step" v-on:drop="addStep(index, $event)" v-on:leave="removeStep(index, $event)" snap="true" />
         </div>

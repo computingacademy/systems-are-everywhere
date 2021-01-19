@@ -130,9 +130,15 @@ body {
 }
 
 .progress .section {
-  border: 1px solid #999999;
+  /*border: 1px solid #999999;*/
   min-width: 22px;
   height: 22px;
+  box-shadow: 
+    1px 0 0 0 #888, 
+    0 1px 0 0 #888, 
+    1px 1px 0 0 #888,   /* Just to fix the corner */
+    1px 0 0 0 #888 inset, 
+    0 1px 0 0 #888 inset;
 }
 
 .progress .section.open {
@@ -148,9 +154,10 @@ body {
 .progress .slide {
   display: inline-block;
   margin: 0px;
-  width: 20px;
-  height: 20px;
-  border: 1px solid #999999;
+  width: 22px;
+  height: 22px;
+  border-right: 1px solid #999999;
+  border-top: 1px solid #999999;
 }
 
 .progress .slide.opened {
@@ -163,6 +170,8 @@ body {
 
 .progress .slide.completed {
   background-color: #49bd9a;
+  border-right: 1px solid #338163;
+  border-top: 1px solid #338163;
 }
 
 @keyframes open {
