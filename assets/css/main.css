@@ -130,15 +130,14 @@ body {
 }
 
 .progress .section {
-  /*border: 1px solid #999999;*/
   min-width: 22px;
   height: 22px;
   box-shadow: 
-    1px 0 0 0 #888, 
-    0 1px 0 0 #888, 
-    1px 1px 0 0 #888,   /* Just to fix the corner */
-    1px 0 0 0 #888 inset, 
-    0 1px 0 0 #888 inset;
+    1px 0 0 0 #999, 
+    0 1px 0 0 #999, 
+    1px 1px 0 0 #999,   /* Just to fix the corner */
+    1px 0 0 0 #999 inset, 
+    0 1px 0 0 #999 inset;
 }
 
 .progress .section.open {
