@@ -1,6 +1,6 @@
 <template>
   <InteractivePage
-    title="<em>Countries</em> are made of <em>cities</em>"
+    title="<em>Countries</em> have lots of <em>cities</em>"
     subtitle="Geography"
     instructions="Find 3 capital cities">
     <CitiesInteractive />

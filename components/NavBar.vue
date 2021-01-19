@@ -21,9 +21,15 @@ import Vue from 'vue'
 
 let sections = [
   {
-    title: 'Introduction',
+    title: 'Title',
     slides: [
       {type: 'title-slide', path: '/', title: 'Systems are everywhere'},
+    ],
+  },
+  {
+  title: 'Introduction',
+    slides: [
+      {type: 'title-slide', path: '/introduction/', title: 'What are systems?'},
     ],
   },
   {

@@ -23,7 +23,7 @@ export default {
     return {
       letters: 'TPOS',
       blanks: [],
-      words: ['SPOT'],
+      words: ['SPOT','STOP','TOPS','POTS','POST','OPTS'],
     }
   },
   methods: {
