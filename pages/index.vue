@@ -10,7 +10,7 @@
     </div>
     <NavBar />
     <div>
-      <p class="supported">This activity is designed for desktop/laptop and tablet browsers, and not recommended for use on smartphones.</p>
+      <p class="supported">This activity has been designed for use on Desktop/Laptop PCs and tablets and is not recommended for phones.</p>
     </div>
   </div>
 </template>

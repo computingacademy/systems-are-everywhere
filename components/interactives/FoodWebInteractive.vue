@@ -71,7 +71,7 @@ export default {
       edges: {
         color: '#49bd9a',
         width: 4,
-        arrows: 'to',
+        arrows: 'from',
       },
       layout: {
         hierarchical: {
